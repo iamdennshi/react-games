@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap");
+
+$bg-body: #96c3eb;
+
+* {
+  box-sizing: border-box;
+}
+
+h2,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+body {
+  margin: 0;
+  padding: 64px 32px;
+  font-family: "Inter", system-ui;
+  background-color: $bg-body;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  background-color: #fff;
+  border-radius: 32px;
+  height: 500px;
+}
+
