@@ -27,6 +27,11 @@ body {
 .App {
   background-color: #fff;
   border-radius: 32px;
-  height: 500px;
+  max-width: 1130px;
+  margin: 0 auto;
+
+  .main {
+    padding: 50px 65px;
+  }
 }
 

@@ -4,13 +4,15 @@ function Header() {
   return (
     <header className="header">
       <div className="header__left">
-        <img
-          className="header__logo"
-          width={"40px"}
-          height={"40px"}
-          alt="logo"
-          src="/img/logo.png"
-        ></img>
+        <a className="header__link" href="/">
+          <img
+            className="header__logo"
+            width={"40px"}
+            height={"40px"}
+            alt="logo"
+            src="/img/logo.png"
+          ></img>
+        </a>
         <div className="header__name">
           <h2 className="header__title">REACT GAMES</h2>
           <p className="header__subtitle">Магазин лучших игр</p>
