@@ -1,85 +1,79 @@
-$primary: #E9E9E9;
-$highlight: #BDBDBD;
-$hovered: #5C5C5C;
-
-$line: 1px solid $primary;
-$transition: .3s;
-
+@import "../App/variables";
 
 .header {
     display: flex;
     justify-content: space-between;
     padding: 44px;
-    border-bottom: $line;
-  
-    &__logo {
-      margin-right: 12px;
-    }
-  
+    border-bottom: 1px solid $color-gray-300;
+
     &__left {
-      display: flex;
+        display: flex;
     }
-  
+
+    &__link {
+        margin-right: 12px;
+    }
+    
+    &__logo {
+        width: 40px;
+        height: 40px;
+    }
+
     &__title {
-      font-size: 20px;
+        font-size: 20px;
     }
-  
+
     &__subtitle {
-      color: $highlight;
-      font-size: 14px;
-      letter-spacing: 0.42px;
+        color: $color-gray-500;
+        letter-spacing: 0.42px;
     }
-  
+
     &__right {
-      display: flex;
-      align-items: center;
-      gap: 32px;
+        display: flex;
+        align-items: center;
+        gap: 32px;
     }
-  
+
     &__cart {
-      display: flex;
-      cursor: pointer;
-
-      svg path {
-        transition: $transition;
-      }
-
- 
-      &:hover {
-        .header__money{
-          color: $hovered;
-        }
+        cursor: pointer;
         svg path {
-          stroke: $hovered;
+            transition: $transition-duration;
         }
-      }
-    }
-  
-    &__likes,
-    &__profile {
-      height: 20px;
-      width: 20px;
-      cursor: pointer;
 
-      svg path{
-        transition: $transition;
 
-      }
+        &:hover {
+            .header__money {
+                color: $color-gray-700;
+            }
 
-      &:hover {
-        svg path {
-          fill: $hovered;
+            svg path {
+                stroke: $color-gray-700;
+            }
         }
-      }
     }
-  
+
     &__money {
-      padding-left: 12px;
-      color: $highlight;
-      font-weight: 500;
-      transition: $transition;
-
-
+        vertical-align: super;
+        padding-left: 12px;
+        color: $color-gray-500;
+        font-weight: 500;
+        transition: $transition-duration;
     }
-  }
-  
+
+    &__like,
+    &__profile {
+        height: 20px;
+        width: 20px;
+        cursor: pointer;
+
+        svg path {
+            transition: $transition-duration;
+        }
+
+        &:hover {
+            svg path {
+                fill: $color-gray-700;
+            }
+        }
+    }
+}
