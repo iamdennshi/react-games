@@ -1,0 +1,45 @@
+@import "../App/variables";
+
+
+.games {
+    margin: 34px 0;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    &__title {
+        font-size: 32px;
+        font-weight: 900;
+    }
+
+    &__search {
+        flex-basis: 272px;
+        position: relative;
+        padding: 13px 46px;
+        background-color: $color-gray-200;
+        border-radius: 10px;
+    }
+
+    &__search-icon {
+        position: absolute;
+        left: 23px;
+        top:16px;
+    }
+
+    &__input {
+        width: 177px;
+        font-size: 16px;
+        padding: 0;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: $color-gray-700;
+    }
+    &__input::placeholder {
+        color: $color-gray-500;
+    }
+}

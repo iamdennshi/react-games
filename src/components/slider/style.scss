@@ -4,17 +4,18 @@
 
 .carousel {
     position: relative;
-    // border-radius: 30px;
     height: 300px;
+    width: 100%;
     overflow-x: clip;
 
     &__slider {
 
         height: 100%;
         display: flex;
-        transition: .5s;
+        transition: $slider-transition;
 
         li {
+            border-radius: 30px;
             flex-basis: 100%;
         }
     }
@@ -27,7 +28,7 @@
         cursor: pointer;
 
         svg {
-            transition: .5s;
+            transition: $hover-transition-duration;
         }
 
         &:hover {
@@ -48,29 +49,46 @@
 
 
 
-.test {
-    border-radius: 30px;
+.slide {
     max-width: 1000px;
     position: relative;
-    background: linear-gradient(162deg, #AFD9FF 0%, rgba(194, 227, 255, 0.50) 100%);
     padding: 32px 97px;
 
+    &--hogwarts {
+        border-radius: 30px;
+        background: linear-gradient(162deg, #AFD9FF 0%, rgba(194, 227, 255, 0.50) 100%);
+    }
+
+    &--atomic {
+        background: $color-gray-400;
+    }
 
     &__img {
-        width: 112px;
-        height: 38px;
-        margin-bottom: 32px;
+        &--hogwarts {
+            width: 112px;
+            height: 38px;
+        }
     }
 
     &__title {
-        margin-bottom: 32px;
+        margin: 34px 0;
         font-size: 32px;
         font-weight: 700;
         max-width: 367px;
+
+        &--atomic {
+            color: $color-gray-700;
+        }
     }
 
     &__sale {
-        color: $color-slider-1;
+        &--hogwarts {
+            color: $color-slider-1;
+        }
+
+        &--atomic {
+            color: $color-pink;
+        }
     }
 
     &__button {
@@ -82,12 +100,29 @@
         border: none;
         border-radius: 100px;
         color: white;
-        background-color: $color-slider-1;
+
+        &--hogwarts {
+            background-color: $color-slider-1;
+        }
+
+        &--atomic {
+            background-color: $color-pink;
+        }
+        
+        
     }
 
     &__poster {
         position: absolute;
-        right: 15px;
-        top: -20px;
+
+        &--hogwarts {
+            right: 10px;
+            top: -10px;
+        }
+
+        &--atomic {
+            top: -45px;
+            left: 420px;
+        }
     }
 }

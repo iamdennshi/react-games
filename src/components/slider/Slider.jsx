@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function Slider() {
 
-  const numberOfPosters = 5;
+  const numberOfPosters = 2;
   const shift = 100.0 / numberOfPosters;
   const [posterIndex, setPosterIndex] = useState(0);
   const handleClick = (event, type) => {
@@ -15,18 +15,20 @@ function Slider() {
   }
 
   return (
-    <div className="carousel">
+      <div className="carousel">
       <ul style={{width: `${numberOfPosters * 100}%`, transform: `translate(-${posterIndex * shift}%)`}} className="carousel__slider">
-        <li className="test">
-          <img src="/img/games/hogwarts.png" alt="" className="test__img" />
-          <h3 className="test__title">Получите <span className="test__sale">скидку 50%</span> на первую игру</h3>
-          <button className="test__button">Купить</button>
-          <img className="test__poster" src="/img/sliders/hogwarts.png" alt="" />
+        <li className="slide slide--hogwarts">
+          <img src="/img/games/hogwarts.png" alt="" className="slide__img slide__img--hogwarts" />
+          <h3 className="slide__title slide__title--hogwarts">Получите <span className="slide__sale slide__sale--hogwarts">скидку 50%</span> на первую игру</h3>
+          <button className="slide__button slide__button--hogwarts">Купить</button>
+          <img className="slide__poster slide__poster--hogwarts" src="/img/sliders/hogwarts.png" alt="" />
         </li>
-        <li style={{backgroundColor: 'blue'}}>Second</li>
-        <li style={{backgroundColor: 'yellow'}}>Third</li>
-        <li style={{backgroundColor: 'green'}}>Fourth</li>
-        <li style={{backgroundColor: 'pink'}}>Fifth</li>
+        <li className="slide slide--atomic">
+          <img src="/img/games/atomic.svg" alt="" className="slide__img slide__img--atomic" />
+          <h3 className="slide__title slide__title--atomic">Получите <span className="slide__sale slide__sale--atomic">скидку 50%</span> на первую игру</h3>
+          <button className="slide__button slide__button--atomic">Купить</button>
+          <img className="slide__poster slide__poster--atomic" src="/img/sliders/atomic.png" alt="" />
+        </li>
       </ul>
       <div className="carousel__controls">
         <span onClick={(e) => handleClick(e, 0)} className="carousel__button carousel__button--left">

@@ -3,7 +3,7 @@
 .header {
     display: flex;
     justify-content: space-between;
-    padding: 44px;
+    padding: 44px 65px;
     border-bottom: 1px solid $color-gray-300;
 
     &__left {
@@ -37,7 +37,7 @@
     &__cart {
         cursor: pointer;
         svg path {
-            transition: $transition-duration;
+            transition: $hover-transition-duration;
         }
 
 
@@ -57,7 +57,7 @@
         padding-left: 12px;
         color: $color-gray-500;
         font-weight: 500;
-        transition: $transition-duration;
+        transition: $hover-transition-duration;
     }
 
     &__like,
@@ -67,7 +67,7 @@
         cursor: pointer;
 
         svg path {
-            transition: $transition-duration;
+            transition: $hover-transition-duration;
         }
 
         &:hover {

@@ -1,5 +1,6 @@
-import Header from '../header/Header'
-import Slider from '../slider/Slider'
+import Header from '../header/Header';
+import Slider from '../slider/Slider';
+import Games from '../games/Games';
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <Header />
       <main className='main'>
         <Slider />
+        <Games />
       </main>
     </div>
   );
