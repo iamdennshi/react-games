@@ -2,9 +2,9 @@
 
 
 .games {
-    margin: 34px 0;
 
     &__header {
+        margin: 34px 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -22,7 +22,14 @@
         padding: 13px 46px;
         background-color: $color-gray-200;
         border-radius: 10px;
+        transition: outline $hover-transition-duration;
+        outline: 1px solid #fff;
+
+        &:hover {
+            outline: 1px solid $color-gray-500;
+        }
     }
+
 
     &__search-icon {
         position: absolute;
@@ -36,10 +43,16 @@
         padding: 0;
         background: transparent;
         border: none;
-        outline: none;
         color: $color-gray-700;
+        outline: none;
     }
     &__input::placeholder {
         color: $color-gray-500;
     }
+}
+
+.cards {
+    display: flex;
+    gap: 34px 50px;
+    flex-wrap: wrap;
 }
