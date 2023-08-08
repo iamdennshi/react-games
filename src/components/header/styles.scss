@@ -1,4 +1,4 @@
-@import "../App/variables";
+@use "../App/variables" as *;
 
 .header {
     display: flex;

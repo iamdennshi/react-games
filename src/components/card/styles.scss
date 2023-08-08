@@ -1,7 +1,7 @@
-@import "../App/variables";
+@use "../App/variables" as *;
 
-$bg-liked: hsl(0, 100, 97);
-$bg-liked-hover: hsl(0, 100, 94);
+$bg-liked: hsl(0, 100%, 97%);
+$bg-liked-hover: hsl(0, 100%, 94%);
 
 
 .card {
