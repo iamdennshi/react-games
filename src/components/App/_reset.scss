@@ -1,0 +1,21 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button, 
+input {
+  font-family: inherit;
+  font-size: inherit;
+}
