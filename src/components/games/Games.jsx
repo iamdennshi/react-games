@@ -21,7 +21,7 @@ function Games() {
             <div className="games__header">
                 <h1 className="games__title">Все игры</h1>
                 <div className="games__search">
-                    <img src="/img/icons/search.svg" alt="" className="games__search-icon" />
+                    <img src="/img/icons/search.svg" alt="icon serach" className="games__search-icon" />
                     <input placeholder="Поиск..." type="text" className="games__input" />
                 </div>
             </div>

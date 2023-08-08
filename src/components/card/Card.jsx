@@ -10,14 +10,14 @@ function splitMoney(money) {
     let separator = " ";
 
     while (totalSlices * SLICE + 4 <= moneyStr.length) {
-        if (result != "") {
+        if (result !== "") {
             result = `${moneyStr.slice(-SLICE * totalSlices * 2, 0 - totalSlices * SLICE)}${separator}${result}`;
         } else {
             result = moneyStr.slice(-SLICE);
         }
         totalSlices += 1;
     }
-    if (result != "") {
+    if (result !== "") {
         return `${moneyStr.slice(0, moneyStr.length - SLICE * totalSlices)}${separator}${result}`;
     } else {
         return moneyStr.slice(0);
@@ -64,7 +64,7 @@ function Card(props) {
             </button>
 
             <div className="card__logo">
-                <img className="card__logo-img" src={props.imgUrl}/>
+                <img className="card__logo-img" src={props.imgUrl} alt="card logo"/>
             </div>
 
             <div className="card__title">{props.name}</div>

@@ -21,13 +21,13 @@ function Slider() {
           <img src="/img/games/hogwarts.png" alt="" className="slide__img slide__img--hogwarts" />
           <h3 className="slide__title slide__title--hogwarts">Получите <span className="slide__sale slide__sale--hogwarts">скидку 50%</span> на первую игру</h3>
           <button className="slide__button slide__button--hogwarts">Купить</button>
-          <img className="slide__poster slide__poster--hogwarts" src="/img/sliders/hogwarts.png" alt="" />
+          <img className="slide__poster slide__poster--hogwarts" src="/img/sliders/hogwarts.png" alt="poster-1"/>
         </li>
         <li className="slide slide--atomic">
           <img src="/img/games/atomic.svg" alt="" className="slide__img slide__img--atomic" />
           <h3 className="slide__title slide__title--atomic">Получите <span className="slide__sale slide__sale--atomic">скидку 50%</span> на первую игру</h3>
           <button className="slide__button slide__button--atomic">Купить</button>
-          <img className="slide__poster slide__poster--atomic" src="/img/sliders/atomic.png" alt="" />
+          <img className="slide__poster slide__poster--atomic" src="/img/sliders/atomic.png" alt="poster-2"/>
         </li>
       </ul>
       <div className="carousel__controls">
