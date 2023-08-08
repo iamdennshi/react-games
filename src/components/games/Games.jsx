@@ -3,8 +3,38 @@ import Card from "../card/Card"
 
 const games = [
     {
-        name: "Hogwarts Legacy", 
+        name: "Atomic Heart", 
         imgUrl: "/img/games/atomic.png", 
+        price: 3990, 
+        likes: 3100, 
+        platfroms: {
+            pc: true, 
+        } 
+    },
+    {
+        name: "Hogwarts Legacy", 
+        imgUrl: "/img/games/hogwarts.png", 
+        price: 3990, 
+        likes: 3100, 
+        platfroms: {
+            pc: true, 
+            xbox: true
+        } 
+    },
+    {
+        name: "Sons Of The Forest", 
+        imgUrl: "/img/games/sons-of-the-forest.png", 
+        price: 3990, 
+        likes: 3100, 
+        platfroms: {
+            pc: true, 
+            ps4: true, 
+            xbox: false
+        } 
+    },
+    {
+        name: "Metro Exodus", 
+        imgUrl: "/img/games/metro.png", 
         price: 3990, 
         likes: 3100, 
         platfroms: {
