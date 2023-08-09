@@ -1,0 +1,64 @@
+@use "../App/variables" as *;
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.cart {
+    position: absolute;
+    inset: 0 0 0 auto;
+    background-color: $bg-app;
+    width: 380px;
+    padding: 0 20px;
+    border-radius: 30px 0 0 30px;
+
+    &__title {
+        font-weight: 900;
+        font-size: 32px;
+        margin-top: 50px;
+        margin-bottom: 27px;
+    }
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    padding: 32px 20px;
+    border-radius: 20px;
+    border: 1px solid $color-gray-300;
+
+    &__logo {
+        margin-right: 12px;
+        width: 150px;
+        height: 60px;
+    }
+
+    &__img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    &__info {
+        flex-grow: 1;
+    }
+
+    &__title {
+        font-weight: 400;
+        margin-bottom: 8px;
+    }
+
+    &__price {
+        display: block;
+        font-weight: 700;
+    }
+
+    &__delete-button {
+        height: 32px;
+        width: 32px;
+        border-radius: 8px;
+        border: 1px solid $color-gray-300;
+    }
+}
