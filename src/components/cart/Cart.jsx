@@ -30,9 +30,9 @@ function Cart() {
                         <div className="cart__line"></div>
                         <span className="cart__tax-value">399 руб.</span>
                     </div>
-                    <button className="cart__button-order button-move">
-                        <p className="button-move__text">Оформить заказ</p>
-                        <img src="/img/icons/arrow-to-right.svg" alt="" />
+                    <button className="button-move button-move--to-right">
+                        <p className="button-move__title">Оформить заказ</p>
+                        <img className="button-move__arrow" src="/img/icons/arrow-to-right.svg" alt="" />
                     </button>
                 </div>
             </div>
