@@ -1,19 +1,11 @@
 import "./styles.scss";
 import Card from "../card/Card"
+import { useContext } from "react";
+import GamesContext from "../../context/GamesContext";
 
 
-
-
-function Games({games}) {
-
-    const onPlus = () => {
-        console.log("Add / Remove Game to Cart");
-    }
-
-    const onLike = () => {
-        console.log("Add / Remove Game to Liked");
-    }
-
+function Games() {
+    const games = useContext(GamesContext);
     return (
         <div className="games">
             <div className="games__header">
@@ -24,7 +16,7 @@ function Games({games}) {
                 </div>
             </div>
             <div className="cards">
-                {games.map(item => <Card name={item.name} imgUrl={item.imgUrl} price={item.price} likes={item.likes} platforms={item.platfroms}/>)}
+                {games.map(item => <Card id={item.id} key={item.id} name={item.name} imgUrl={item.imgUrl} price={item.price} likes={item.likes} platforms={item.platfroms}/>)}
             </div>
         </div>
     )

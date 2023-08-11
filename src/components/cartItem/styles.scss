@@ -1,0 +1,42 @@
+@use "../App/variables" as *;
+.item {
+    display: flex;
+    column-gap: 12px;
+    align-items: center;
+    padding: 24px 20px;
+    border-radius: 20px;
+    border: 1px solid $color-gray-300;
+    margin-bottom: 27px;
+
+    &__logo {
+        width: 80px;
+    }
+
+    &__img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    &__info {
+        flex-grow: 1;
+    }
+
+    &__title {
+        font-weight: 400;
+        margin-bottom: 8px;
+    }
+
+    &__price {
+        display: block;
+        font-weight: 700;
+
+        &::after {
+            content: " руб.";
+        }
+    }
+
+    &:last-of-type{
+        margin-bottom: 0;
+    }
+}

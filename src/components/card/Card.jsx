@@ -1,7 +1,8 @@
 import "./styles.scss"
-import { useState} from "react";
+import { useState, useContext} from "react";
 import React from 'react';
 import splitMoney from "../../utils/splitMoney"
+import CartContext from "../../context/CartContext";
 
 function splitLikes(likes) {
     const likesStr = likes.toString();
@@ -15,6 +16,7 @@ function splitLikes(likes) {
 function Card(props) {
 
     const [isAdd, setIsAdd] = useState(false);
+    const [gamesInCart, setGamesInCart] = useContext(CartContext);
 
     const handleLikes = (event) => {
         event.currentTarget.classList.toggle("card__like-button--liked");
@@ -22,6 +24,11 @@ function Card(props) {
 
     const handlePlus = (event) => {
         event.currentTarget.classList.toggle("card__button-add--active");
+        if (isAdd) {
+            setGamesInCart(gamesInCart.filter(item => item !== props.id));
+        } else {
+            setGamesInCart([props.id, ...gamesInCart])
+        }
         setIsAdd(current => !current);
 
     }
