@@ -53,6 +53,7 @@
 
 .cards {
     display: flex;
+    justify-content: space-evenly;
     gap: 34px 50px;
     flex-wrap: wrap;
 }

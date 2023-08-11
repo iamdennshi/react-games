@@ -25,8 +25,6 @@ function Card(props) {
 
     }
 
-
-    console.log("Rerender card")
     return (
         <div className="card">
             <button onClick={handleLikes} className="card__like-button">

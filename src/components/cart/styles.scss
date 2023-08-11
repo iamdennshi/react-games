@@ -2,11 +2,17 @@
 @use "../App/buttons";
 
 .overlay {
-    overflow-x: hidden;
-    position: absolute;
+    position: fixed;
     inset: 0;
     background-color: rgba(0,0,0,0.6);
-    transition: opacity 0.3s;
+    transition: 0.5s;
+    opacity: 0;
+    visibility: hidden;
+
+    &--active {
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
 
@@ -25,13 +31,18 @@
 .cart {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    height: 100vh;
-    right: 0;
+    position: fixed;
+    min-height: 100vh;
+    top: 0;
+    right:-100%;
     background-color: $bg-app;
     width: 380px;
     padding: 0 20px;
-    transition: right 0.6s;
+    transition: right 0.5s;
+
+    &--active {
+        right: 0;
+    }
 
 
     &__header {

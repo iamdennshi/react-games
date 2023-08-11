@@ -45,7 +45,22 @@ const games = [
     },
 ]
 
+
+
+
 function Games({splitMoney}) {
+
+    const onPlus = () => {
+        console.log("Add / Remove Game to Cart");
+    }
+
+    const onLike = () => {
+        console.log("Add / Remove Game to Liked");
+    }
+
+
+
+
     return (
         <div className="games">
             <div className="games__header">

@@ -1,8 +1,9 @@
 import "./styles.scss";
 import { useState } from "react";
 
-function Slider() {
+// TODO Бесконечный скрол
 
+function Slider() {
   const numberOfPosters = 2;
   const shift = 100.0 / numberOfPosters;
   const [posterIndex, setPosterIndex] = useState(0);

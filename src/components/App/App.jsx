@@ -10,19 +10,19 @@ import {useState} from 'react';
 
 function App() {
 
-  const [showCart, setShowCart] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const handleShowCart = () => {
-    setShowCart(current => !current);
+  const onCartOpen = () => {
+    setIsCartOpen(!isCartOpen);
   }
 
   return (
     <div className="App">
-      <Header handleShowCart={handleShowCart} />
+      <Header handleShowCart={onCartOpen} />
       <main className='main'>
         <Slider />
         <Games/>
-        {showCart && <Cart handleShowCart={handleShowCart}/>}
+        <Cart onCartOpen={onCartOpen} isCartOpen={isCartOpen}/>
       </main>
     </div>
   );
