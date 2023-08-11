@@ -30,6 +30,7 @@
 
 .cart {
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     position: fixed;
     min-height: 100vh;
@@ -59,7 +60,7 @@
     }
 
     &__footer {
-        margin-top: auto;
+        margin-top: 27px;
         margin-bottom: 38px;
         font-size: 16px;
     }
@@ -84,6 +85,13 @@
 
 }
 
+
+.items {
+    overflow: auto;
+    flex-grow: 1;
+    flex-basis: 100px;
+}
+
 .item {
     display: flex;
     column-gap: 12px;
@@ -91,6 +99,7 @@
     padding: 24px 20px;
     border-radius: 20px;
     border: 1px solid $color-gray-300;
+    margin-bottom: 27px;
 
     &__logo {
         width: 80px;
@@ -114,5 +123,53 @@
     &__price {
         display: block;
         font-weight: 700;
+    }
+
+    &:last-of-type{
+        margin-bottom: 0;
+    }
+}
+
+.empty-box,
+.order-placed {
+    text-align: center;
+    
+    &__img {
+        display: block;
+        margin: auto;
+        margin-bottom: 13px;
+    }
+
+    &__title{
+        display: block;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 13px;
+    }
+
+    &__text {
+        color: $color-gray-500;
+        font-size: 16px;
+        display: block;
+        margin: auto;
+    }
+}
+
+.empty-box {
+    &__text {
+        max-width: 230px;
+    }
+}
+
+.order-placed {
+    &__title {
+        color: $bg-green;
+    }
+    &__img {
+        width: 83px;
+    }
+
+    &__text {
+        max-width: 260px;
     }
 }

@@ -1,7 +1,7 @@
 import "./styles.scss";
 import splitMoney from "../../utils/splitMoney"
 
-function Header({handleShowCart}) {
+function Header({onCartOpen}) {
 
   const MONEY = 12345;
 
@@ -22,7 +22,7 @@ function Header({handleShowCart}) {
         </div>
       </div>
       <ul className="header__right">
-        <li onClick={handleShowCart} className="header__cart">
+        <li onClick={onCartOpen} className="header__cart">
           <svg
             width="20"
             height="20"

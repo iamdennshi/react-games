@@ -41,12 +41,25 @@
     &__arrow {
         position: absolute;
         top: calc(50% - 7px);
-        transition: right $hover-transition-duration ease-in-out;
         
+    }
+
+    &--to-left {
+        img {
+            transition: left $hover-transition-duration ease-in-out;
+            left: 37px;
+            transform: rotateY(180deg);
+        }
+        &:hover {
+            img {
+                left: 30px;
+            }
+        }
     }
 
     &--to-right {
         img {
+            transition: right $hover-transition-duration ease-in-out;
             right: 37px;
         }
         &:hover {

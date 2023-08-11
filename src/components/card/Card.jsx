@@ -1,5 +1,6 @@
 import "./styles.scss"
-import { useState } from "react";
+import { useState} from "react";
+import React from 'react';
 import splitMoney from "../../utils/splitMoney"
 
 function splitLikes(likes) {
