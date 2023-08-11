@@ -45,7 +45,7 @@ const games = [
     },
 ]
 
-function Games() {
+function Games({splitMoney}) {
     return (
         <div className="games">
             <div className="games__header">

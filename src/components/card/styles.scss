@@ -1,4 +1,5 @@
 @use "../App/variables" as *;
+@use "../App/buttons";
 
 $bg-liked: hsl(0, 100%, 97%);
 $bg-liked-hover: hsl(0, 100%, 94%);
@@ -131,28 +132,8 @@ $bg-liked-hover: hsl(0, 100%, 94%);
   }
 
   &__button-add {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    width: 32px;
-    border-radius: 8px;
-    outline: 1px solid $color-gray-300;
-    border: none;
-    cursor: pointer;
-    transition: outline $hover-transition-duration, fill $hover-transition-duration, translateY .1s, background $hover-transition-duration;
-
-    &:active {
-      transform: translateY(2px);
-    }
-    
-    &:hover {
-      outline-color: $color-gray-500;
-      path {
-        fill: $color-gray-500;
-      }
-    }
-
+    @include buttons.button-action;
+  
     &--active {
       background: #2CD250;
       outline: none;

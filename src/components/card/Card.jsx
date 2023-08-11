@@ -1,28 +1,6 @@
 import "./styles.scss"
 import { useState } from "react";
-
-
-function splitMoney(money) {
-    const moneyStr = money.toString();
-    const SLICE = 3;
-    let totalSlices = 0;
-    let result = ""
-    let separator = " ";
-
-    while (totalSlices * SLICE + 4 <= moneyStr.length) {
-        if (result !== "") {
-            result = `${moneyStr.slice(-SLICE * totalSlices * 2, 0 - totalSlices * SLICE)}${separator}${result}`;
-        } else {
-            result = moneyStr.slice(-SLICE);
-        }
-        totalSlices += 1;
-    }
-    if (result !== "") {
-        return `${moneyStr.slice(0, moneyStr.length - SLICE * totalSlices)}${separator}${result}`;
-    } else {
-        return moneyStr.slice(0);
-    }
-}
+import splitMoney from "../../utils/splitMoney"
 
 function splitLikes(likes) {
     const likesStr = likes.toString();
@@ -32,8 +10,6 @@ function splitLikes(likes) {
     return (likes / 1000.0).toFixed(1) + "k";
 
 }
-
-
 
 function Card(props) {
 
@@ -45,13 +21,12 @@ function Card(props) {
 
     const handlePlus = (event) => {
         event.currentTarget.classList.toggle("card__button-add--active");
-        setIsAdd(() => !isAdd);
+        setIsAdd(current => !current);
 
     }
 
 
-    console.log("Rerender")
-
+    console.log("Rerender card")
     return (
         <div className="card">
             <button onClick={handleLikes} className="card__like-button">
@@ -69,16 +44,19 @@ function Card(props) {
 
             <div className="card__title">{props.name}</div>
             <ul className="card__platforms">
-                {props.platforms.pc ? <li title="PC">
+                {props.platforms.pc && 
+                <li title="PC">
                     <img src="/img/icons/PC.svg" alt="" />
-                </li> : ""}
+                </li>}
 
-                {props.platforms.ps4 ? <li title="PS4">
-                        <img src="/img/icons/ps4.svg" alt="" />
-                </li> : ""}
-                {props.platforms.xbox ? <li title="xbox">
+                {props.platforms.ps4 && 
+                <li title="PS4">
+                    <img src="/img/icons/ps4.svg" alt="" />
+                </li>}
+
+                {props.platforms.xbox && <li title="xbox">
                         <img src="/img/icons/xbox.svg" alt="" />
-                </li> : ""}
+                </li>}
 
             </ul>
             <div className="card__footer">

@@ -58,6 +58,10 @@
         color: $color-gray-500;
         font-weight: 500;
         transition: $hover-transition-duration;
+
+        &::after {
+            content: " руб.";
+        }
     }
 
     &__like,

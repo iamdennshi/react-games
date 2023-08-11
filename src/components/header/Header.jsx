@@ -1,6 +1,11 @@
 import "./styles.scss";
+import splitMoney from "../../utils/splitMoney"
 
-function Header() {
+function Header({handleShowCart}) {
+
+  const MONEY = 12345;
+
+
   return (
     <header className="header">
       <div className="header__left">
@@ -17,7 +22,7 @@ function Header() {
         </div>
       </div>
       <ul className="header__right">
-        <li className="header__cart">
+        <li onClick={handleShowCart} className="header__cart">
           <svg
             width="20"
             height="20"
@@ -47,7 +52,7 @@ function Header() {
               stroke-linejoin="round"
             />
           </svg>
-          <span className="header__money">1250 руб.</span>
+          <span className="header__money">{splitMoney(MONEY)}</span>
         </li>
         <li className="header__like">
           <svg
