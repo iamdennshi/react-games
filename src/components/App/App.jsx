@@ -20,27 +20,43 @@ function App() {
     setIsCartOpen(!isCartOpen);
   }
 
+  const onDeleteItem = (gameID) => {
+    setGamesInCart(gamesInCart.filter(item => item !== gameID));
+    // FIXME: Как можно улучить??????
+    document.querySelectorAll(".card__button-add")[gameID].classList.toggle("card__button-add--active");
+  }
+
+  const onAddItem = (gameID) => {
+    setGamesInCart([gameID, ...gamesInCart])
+    // FIXME: Как можно улучить??????
+    document.querySelectorAll(".card__button-add")[gameID].classList.toggle("card__button-add--active");
+  }
+
   useEffect(() => {
       fetch(API)
         .then((response) => response.json())
         .then((data) => setGames(data))
-    console.log(CartContext);
   },[]);
 
+
+  useEffect(() => {
+    console.log(gamesInCart);
+  },[gamesInCart]);
+
+
   return (
+    <GamesContext.Provider value={games}>
+    <CartContext.Provider value={[gamesInCart, setGamesInCart]}>
     <div className="App">
       <Header onCartOpen={onCartOpen} />
       <main className='main'>
-          <Slider />
-
-        <GamesContext.Provider value={games}>
-          <CartContext.Provider value={[gamesInCart, setGamesInCart]}>
-            <Games/>
-            <Cart onCartOpen={onCartOpen} isCartOpen={isCartOpen}/>
-          </CartContext.Provider>
-        </GamesContext.Provider>
+        <Slider />
+        <Games onDeleteItem={onDeleteItem} onAddItem={onAddItem}/>
+        <Cart onDeleteItem={onDeleteItem} onCartOpen={onCartOpen} isCartOpen={isCartOpen}/>
       </main>
     </div>
+    </CartContext.Provider>
+    </GamesContext.Provider>
   );
 }
 

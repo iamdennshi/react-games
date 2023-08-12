@@ -1,10 +1,20 @@
 import "./styles.scss";
 import CartContext from "../../context/CartContext";
-import {useContext} from 'react';
+import GamesContext from "../../context/GamesContext";
+import { useContext } from 'react';
 import CartItem from '../cartItem/CartItem';
+import splitMoney from "../../utils/splitMoney";
 
-function Cart({ onCartOpen, isCartOpen }) {
+const RATE = 0.05;
+
+function Cart({ onDeleteItem, onCartOpen, isCartOpen }) {
     const [gamesInCart, setGamesInCart] = useContext(CartContext);
+    const games = useContext(GamesContext);
+
+    const TOTAL_MONEY = gamesInCart.reduce((currentSum, currentNumber) => {
+        return currentSum + Number(games[currentNumber].price);
+    }, 0);
+
 
     return (
         <>
@@ -18,21 +28,17 @@ function Cart({ onCartOpen, isCartOpen }) {
                         </svg>
                     </button>
                 </div>
+                {
+                    gamesInCart.length !== 0 ?
+                    <ul className="items">{gamesInCart.map(id => <CartItem onDeleteItem={onDeleteItem} key={id} gameID={id} />)}</ul>
+                    :
+                    <div className="empty-box">
+                        <img className="empty-box__img" src="/img/empty_box.png" alt="Empty box" />
+                        <b className="empty-box__title">Корзина пустая</b>
+                        <p className="empty-box__text">Добавьте хотя бы одну игру, чтобы сделать заказ.</p>
+                    </div>
+                }
 
-                {/* Если в карзине ЕСТЬ тавар */}
-                <ul className="items">
-                    {gamesInCart.map(id => <CartItem key={id} gameID={id} />)}
-                </ul>
-
-
-
-                {/* Если в карзине нету ничего */}
-                {/* <div className="empty-box">
-                    <img className="empty-box__img" src="/img/empty_box.png" alt="Empty box" />
-                    <b className="empty-box__title">Корзина пустая</b>
-                    <p className="empty-box__text">Добавьте хотя бы одну игру,
-                        чтобы сделать заказ.</p>
-                </div> */}
 
                 {/* Если заказ был оформлен */}
                 {/* <div className="order-placed">
@@ -42,31 +48,31 @@ function Cart({ onCartOpen, isCartOpen }) {
                 </div> */}
 
                 <div className="cart__footer">
-
-                {/* Если в карзине ЕСТЬ тавар */}
-                    <div className="cart__total">
-                        <p className="cart__total-text">Итого:</p>
-                        <div className="cart__line"></div>
-                        <span className="cart__total-value">7 998 руб.</span>
-                    </div>
-                    <div className="cart__tax">
-                        <p className="cart__tax-text">Налог 5%:</p>
-                        <div className="cart__line"></div>
-                        <span className="cart__tax-value">399 руб.</span>
-                    </div>
-                    <button className="button-move button-move--to-right">
-                        <p className="button-move__title">Оформить заказ</p>
-                        <img className="button-move__arrow" src="/img/icons/arrow.svg" alt="" />
-                    </button>
-
-                {/* Если в карзине нету ничего или заказ был оформлен */}
-                    {/* <button className="button-move button-move--to-left">
-                        <p className="button-move__title">Вернуться назад</p>
-                        <img className="button-move__arrow" src="/img/icons/arrow.svg" alt="" />
-                    </button> */}
+                    {
+                        gamesInCart.length !== 0 ?
+                        <>
+                            <div className="cart__total">
+                                <p className="cart__total-text">Итого:</p>
+                                <div className="cart__line"></div>
+                                <span className="cart__total-value">{splitMoney(TOTAL_MONEY)}</span>
+                            </div>
+                            <div className="cart__tax">
+                                <p className="cart__tax-text">Налог {RATE * 100}%:</p>
+                                <div className="cart__line"></div>
+                                <span className="cart__tax-value">{splitMoney(TOTAL_MONEY * RATE)}</span>
+                            </div>
+                            <button className="button-move button-move--to-right">
+                                <p className="button-move__title">Оформить заказ</p>
+                                <img className="button-move__arrow" src="/img/icons/arrow.svg" alt="" />
+                            </button>
+                        </>
+                        :
+                        <button onClick={onCartOpen} className="button-move button-move--to-left">
+                            <p className="button-move__title">Вернуться назад</p>
+                            <img className="button-move__arrow" src="/img/icons/arrow.svg" alt="" />
+                        </button>
+                    }
                 </div>
-
-
             </div>
         </>
     );

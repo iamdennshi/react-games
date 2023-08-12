@@ -2,10 +2,12 @@ import "./styles.scss";
 import Card from "../card/Card"
 import { useContext } from "react";
 import GamesContext from "../../context/GamesContext";
+import CartContext from "../../context/CartContext";
 
-
-function Games() {
+function Games({onDeleteItem, onAddItem}) {
     const games = useContext(GamesContext);
+    const [gamesInCart, setGamesInCart] = useContext(CartContext);
+
     return (
         <div className="games">
             <div className="games__header">
@@ -16,7 +18,7 @@ function Games() {
                 </div>
             </div>
             <div className="cards">
-                {games.map(item => <Card id={item.id} key={item.id} name={item.name} imgUrl={item.imgUrl} price={item.price} likes={item.likes} platforms={item.platfroms}/>)}
+                {games.map(item => <Card idAdded={gamesInCart.includes(item.id)} key={item.id} item={item} onDeleteItem={onDeleteItem} onAddItem={onAddItem}/>)}
             </div>
         </div>
     )

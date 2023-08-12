@@ -24,10 +24,6 @@
     @include buttons.button-move;
 }
 
-
-// FIXME убрать скрол при октрытии карзины 
-
-
 .cart {
     display: flex;
     justify-content: space-between;
@@ -77,7 +73,10 @@
         border-bottom: 1px dashed $color-gray-500;
         margin-bottom: 5px;
     }
-
+    &__total-value::after,
+    &__tax-value::after {
+        content: " руб.";
+    }
     &__total-value,
     &__tax-value {
         font-weight: 600;
