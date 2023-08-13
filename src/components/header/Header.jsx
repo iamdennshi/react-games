@@ -1,10 +1,12 @@
 import "./styles.scss";
 import splitMoney from "../../utils/splitMoney"
 
+
+const MONEY = 0;
+
 function Header({onCartOpen}) {
 
-  const MONEY = 12345;
-
+  console.log("render header")
 
   return (
     <header className="header">

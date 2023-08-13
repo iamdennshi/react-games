@@ -1,23 +1,27 @@
 import "./styles.scss";
 import { useState } from "react";
+import React from "react";
 
-// TODO Бесконечный скрол
+// TODO Сделать бесконечный скрол
+const NUMBER_OF_POSTS = 2;
+const SHIFT = 100.0 / NUMBER_OF_POSTS;
 
 function Slider() {
-  const numberOfPosters = 2;
-  const shift = 100.0 / numberOfPosters;
   const [posterIndex, setPosterIndex] = useState(0);
   const handleClick = (event, type) => {
     if (type) {
-      setPosterIndex(() => (posterIndex + 1) % numberOfPosters);
+      setPosterIndex(() => (posterIndex + 1) % NUMBER_OF_POSTS);
     } else {
-      setPosterIndex(() => (posterIndex - 1 >= 0) ? posterIndex - 1 : numberOfPosters - 1); 
+      setPosterIndex(() => (posterIndex - 1 >= 0) ? posterIndex - 1 : NUMBER_OF_POSTS - 1); 
     }
   }
 
+
+  console.log("Render SLIDER");
+
   return (
       <div className="carousel">
-      <ul style={{width: `${numberOfPosters * 100}%`, transform: `translate(-${posterIndex * shift}%)`}} className="carousel__slider">
+      <ul style={{width: `${NUMBER_OF_POSTS * 100}%`, transform: `translate(-${posterIndex * SHIFT}%)`}} className="carousel__slider">
         <li className="slide slide--hogwarts">
           <img src="/img/games/hogwarts.png" alt="" className="slide__img slide__img--hogwarts" />
           <h3 className="slide__title slide__title--hogwarts">Получите <span className="slide__sale slide__sale--hogwarts">скидку 50%</span> на первую игру</h3>
@@ -42,4 +46,4 @@ function Slider() {
   );
 }
 
-export default Slider;
+export default React.memo(Slider);

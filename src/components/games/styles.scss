@@ -2,7 +2,6 @@
 
 
 .games {
-
     &__header {
         margin: 34px 0;
         display: flex;
@@ -14,9 +13,17 @@
     &__title {
         font-size: 32px;
         font-weight: 900;
+        white-space: nowrap;
+        overflow: hidden;
+
+        b {
+            font-weight: 900;
+            color: $color-gray-700;
+        }
     }
 
     &__search {
+        position: relative;
         flex-basis: 272px;
         position: relative;
         padding: 13px 46px;
@@ -24,6 +31,7 @@
         border-radius: 10px;
         transition: outline $hover-transition-duration;
         outline: 1px solid #fff;
+        margin-left: 16px;
 
         &:hover {
             outline: 1px solid $color-gray-500;
@@ -48,6 +56,16 @@
     }
     &__input::placeholder {
         color: $color-gray-500;
+    }
+
+    &__search-button {
+        position: absolute;
+        top: 6px;
+        right: 10px;
+        background-color: transparent;
+        height: 32px;
+        width: 32px;
+        cursor: pointer;
     }
 }
 

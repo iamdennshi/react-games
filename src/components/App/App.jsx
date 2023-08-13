@@ -2,10 +2,8 @@ import Header from '../header/Header';
 import Slider from '../slider/Slider';
 import Games from '../games/Games';
 import Cart from '../cart/Cart';
-import CartContext from "../../context/CartContext"
-import GamesContext from "../../context/GamesContext"
-
 import {useState, useEffect} from 'react';
+import GlobalContext from '../../context/GlobalContext';
 
 
 const API = "https://64d65505754d3e0f1361f729.mockapi.io/games";
@@ -16,19 +14,22 @@ function App() {
   const [gamesInCart, setGamesInCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
+
+  console.log(<span key={1}>Hello</span>)
+
   const onCartOpen = () => {
     setIsCartOpen(!isCartOpen);
   }
 
   const onDeleteItem = (gameID) => {
-    setGamesInCart(gamesInCart.filter(item => item !== gameID));
-    // FIXME: Как можно улучить??????
+    setGamesInCart(prev => prev.filter(item => item !== gameID));
+    // FIXME: Не работает когда добавляем при поиске
     document.querySelectorAll(".card__button-add")[gameID].classList.toggle("card__button-add--active");
   }
 
   const onAddItem = (gameID) => {
-    setGamesInCart([gameID, ...gamesInCart])
-    // FIXME: Как можно улучить??????
+    setGamesInCart(prev => [gameID, ...gamesInCart])
+        // FIXME: Не работает когда добавляем при поиске
     document.querySelectorAll(".card__button-add")[gameID].classList.toggle("card__button-add--active");
   }
 
@@ -44,9 +45,9 @@ function App() {
   },[gamesInCart]);
 
 
+
   return (
-    <GamesContext.Provider value={games}>
-    <CartContext.Provider value={[gamesInCart, setGamesInCart]}>
+    <GlobalContext.Provider value={[games, gamesInCart, setGamesInCart]}>
     <div className="App">
       <Header onCartOpen={onCartOpen} />
       <main className='main'>
@@ -55,8 +56,7 @@ function App() {
         <Cart onDeleteItem={onDeleteItem} onCartOpen={onCartOpen} isCartOpen={isCartOpen}/>
       </main>
     </div>
-    </CartContext.Provider>
-    </GamesContext.Provider>
+    </GlobalContext.Provider>
   );
 }
 
