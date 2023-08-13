@@ -5,12 +5,13 @@ import splitMoney from "../../utils/splitMoney";
 
 const RATE = 0.05;
 
-export default function Cart({ onDeleteItem, onCartOpen, isCartOpen }) {
-    const [games, gamesInCart] = useContext(GlobalContext);
+export default function Cart({ onDeleteItem, onCartOpen, isCartOpen}) {
+    const [games, gamesInCart] = useContext(GlobalContext)
 
-    const TOTAL_MONEY = gamesInCart.reduce((currentSum, currentNumber) => {
-        return currentSum + Number(games[currentNumber].price);
-    }, 0);
+    const TOTAL_PRICE = gamesInCart.reduce((currentSum, currentNumber) => {
+      return currentSum + Number(games[currentNumber].price);
+  }, 0);
+
 
 
     return (
@@ -51,12 +52,12 @@ export default function Cart({ onDeleteItem, onCartOpen, isCartOpen }) {
                             <div className="cart__total">
                                 <p className="cart__total-text">Итого:</p>
                                 <div className="cart__line"></div>
-                                <span className="cart__total-value">{splitMoney(TOTAL_MONEY)}</span>
+                                <span className="cart__total-value">{splitMoney(TOTAL_PRICE)}</span>
                             </div>
                             <div className="cart__tax">
                                 <p className="cart__tax-text">Налог {RATE * 100}%:</p>
                                 <div className="cart__line"></div>
-                                <span className="cart__tax-value">{splitMoney(TOTAL_MONEY * RATE)}</span>
+                                <span className="cart__tax-value">{splitMoney(TOTAL_PRICE * RATE)}</span>
                             </div>
                             <button className="button-move button-move--to-right">
                                 <p className="button-move__title">Оформить заказ</p>

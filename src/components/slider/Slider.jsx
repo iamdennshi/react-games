@@ -16,9 +16,6 @@ function Slider() {
     }
   }
 
-
-  console.log("Render SLIDER");
-
   return (
       <div className="carousel">
       <ul style={{width: `${NUMBER_OF_POSTS * 100}%`, transform: `translate(-${posterIndex * SHIFT}%)`}} className="carousel__slider">
@@ -46,4 +43,4 @@ function Slider() {
   );
 }
 
-export default React.memo(Slider);
+export default Slider;

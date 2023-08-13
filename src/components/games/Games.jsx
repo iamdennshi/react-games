@@ -15,7 +15,6 @@ function Games({ onDeleteItem, onAddItem }) {
         <div className="games">
             <div className="games__header">
                 <h1 className="games__title">
-                    {/* TODO Сделать кнопку удаления текса в поиске */}
                     {search === "" ? "Все игры" : `Поиск по `}
                     <b>{search && `${search}`}</b>
                 </h1>

@@ -2,7 +2,7 @@ import Header from '../header/Header';
 import Slider from '../slider/Slider';
 import Games from '../games/Games';
 import Cart from '../cart/Cart';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import GlobalContext from '../../context/GlobalContext';
 
 
@@ -13,9 +13,6 @@ function App() {
   const [games, setGames] = useState([]);
   const [gamesInCart, setGamesInCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-
-
-  console.log(<span key={1}>Hello</span>)
 
   const onCartOpen = () => {
     setIsCartOpen(!isCartOpen);
@@ -38,12 +35,6 @@ function App() {
         .then((response) => response.json())
         .then((data) => setGames(data))
   },[]);
-
-
-  useEffect(() => {
-    console.log(gamesInCart);
-  },[gamesInCart]);
-
 
 
   return (

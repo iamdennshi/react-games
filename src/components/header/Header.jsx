@@ -1,12 +1,15 @@
 import "./styles.scss";
 import splitMoney from "../../utils/splitMoney"
+import { useContext } from "react";
+import GlobalContext from "../../context/GlobalContext";
 
-
-const MONEY = 0;
 
 function Header({onCartOpen}) {
+  const [games, gamesInCart] = useContext(GlobalContext)
 
-  console.log("render header")
+  const TOTAL_PRICE = gamesInCart.reduce((currentSum, currentNumber) => {
+    return currentSum + Number(games[currentNumber].price);
+}, 0);
 
   return (
     <header className="header">
@@ -53,8 +56,8 @@ function Header({onCartOpen}) {
               stroke-linecap="round"
               stroke-linejoin="round"
             />
-          </svg>
-          <span className="header__money">{splitMoney(MONEY)}</span>
+          </svg>  
+          <span className="header__money">{splitMoney(TOTAL_PRICE)}</span>
         </li>
         <li className="header__like">
           <svg
