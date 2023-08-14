@@ -7,8 +7,9 @@ import GlobalContext from "../../context/GlobalContext";
 function Header({onCartOpen}) {
   const [games, gamesInCart] = useContext(GlobalContext)
 
+
   const TOTAL_PRICE = gamesInCart.reduce((currentSum, currentNumber) => {
-    return currentSum + Number(games[currentNumber].price);
+    return currentSum + Number(games[currentNumber]?.price);
 }, 0);
 
   return (
@@ -38,23 +39,23 @@ function Header({onCartOpen}) {
             <path
               d="M7.54511 18.1818C7.99698 18.1818 8.36329 17.8155 8.36329 17.3637C8.36329 16.9118 7.99698 16.5455 7.54511 16.5455C7.09324 16.5455 6.72693 16.9118 6.72693 17.3637C6.72693 17.8155 7.09324 18.1818 7.54511 18.1818Z"
               stroke="#C4C4C4"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M16.5451 18.1818C16.997 18.1818 17.3633 17.8155 17.3633 17.3637C17.3633 16.9118 16.997 16.5455 16.5451 16.5455C16.0932 16.5455 15.7269 16.9118 15.7269 17.3637C15.7269 17.8155 16.0932 18.1818 16.5451 18.1818Z"
               stroke="#C4C4C4"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M0.999634 1H4.27236L6.46509 11.9555C6.53991 12.3321 6.74483 12.6705 7.04399 12.9113C7.34315 13.1522 7.71748 13.2801 8.10145 13.2727H16.0542C16.4382 13.2801 16.8125 13.1522 17.1116 12.9113C17.4108 12.6705 17.6157 12.3321 17.6905 11.9555L18.9996 5.09091H5.09054"
               stroke="#C4C4C4"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>  
           <span className="header__money">{splitMoney(TOTAL_PRICE)}</span>
@@ -78,8 +79,8 @@ function Header({onCartOpen}) {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M0.110718 10C0.110718 4.579 4.68972 0 10.1107 0C15.5317 0 20.1107 4.579 20.1107 10C20.1107 13.19 18.5187 16.078 16.1107 17.924V18H16.0087C14.3407 19.245 12.2977 20 10.1107 20C7.92372 20 5.88072 19.245 4.21272 18H4.11072V17.924C1.70272 16.078 0.110718 13.189 0.110718 10ZM7.23419 15.236C6.70226 15.6639 6.33208 16.2604 6.18472 16.927C7.35272 17.604 8.69472 18 10.1107 18C11.5267 18 12.8687 17.604 14.0367 16.927C13.8892 16.2605 13.519 15.6641 12.9871 15.2362C12.4552 14.8083 11.7934 14.5744 11.1107 14.573H9.11072C8.42802 14.5742 7.76611 14.808 7.23419 15.236ZM13.8784 13.4117C14.6984 13.9574 15.3393 14.7329 15.7207 15.641C17.1877 14.182 18.1107 12.176 18.1107 10C18.1107 5.663 14.4477 2 10.1107 2C5.77372 2 2.11072 5.663 2.11072 10C2.11072 12.176 3.03372 14.182 4.50072 15.641C4.88216 14.7329 5.52299 13.9574 6.34299 13.4117C7.16298 12.866 8.12573 12.5742 9.11072 12.573H11.1107C12.0957 12.5742 13.0585 12.866 13.8784 13.4117ZM6.11072 8C6.11072 5.72 7.83072 4 10.1107 4C12.3907 4 14.1107 5.72 14.1107 8C14.1107 10.28 12.3907 12 10.1107 12C7.83072 12 6.11072 10.28 6.11072 8ZM8.11072 8C8.11072 9.178 8.93272 10 10.1107 10C11.2887 10 12.1107 9.178 12.1107 8C12.1107 6.822 11.2887 6 10.1107 6C8.93272 6 8.11072 6.822 8.11072 8Z"
               fill="#C4C4C4"
             />

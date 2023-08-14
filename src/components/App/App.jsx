@@ -2,11 +2,11 @@ import Header from '../header/Header';
 import Slider from '../slider/Slider';
 import Games from '../games/Games';
 import Cart from '../cart/Cart';
-import {useState, useEffect, useRef} from 'react';
+import {useState, useEffect} from 'react';
 import GlobalContext from '../../context/GlobalContext';
 
 
-const API = "https://64d65505754d3e0f1361f729.mockapi.io/games";
+const API = "https://64d65505754d3e0f1361f729.mockapi.io";
 
 
 function App() {
@@ -20,21 +20,27 @@ function App() {
 
   const onDeleteItem = (gameID) => {
     setGamesInCart(prev => prev.filter(item => item !== gameID));
-    // FIXME: Не работает когда добавляем при поиске
-    document.querySelectorAll(".card__button-add")[gameID].classList.toggle("card__button-add--active");
   }
 
   const onAddItem = (gameID) => {
     setGamesInCart(prev => [gameID, ...gamesInCart])
-        // FIXME: Не работает когда добавляем при поиске
-    document.querySelectorAll(".card__button-add")[gameID].classList.toggle("card__button-add--active");
   }
 
   useEffect(() => {
-      fetch(API)
+      fetch(`${API}/games`)
         .then((response) => response.json())
         .then((data) => setGames(data))
+        .then(fetch(`${API}/cart`)
+          .then(response => response.json())
+          .then(data => setGamesInCart(data.map(item => item.gameID))))
+
   },[]);
+
+  useEffect(() => {
+    console.log(gamesInCart);
+    console.log(games);
+
+  }, [gamesInCart, games])
 
 
   return (

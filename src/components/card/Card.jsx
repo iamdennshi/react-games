@@ -24,10 +24,6 @@ function Card({isAdded, item, onDeleteItem, onAddItem}) {
             onAddItem(item.id);
         }
     }
-
-
-    // console.log(`card ${item.id} render`);
-
     return (
         <div className="card">
             <button onClick={onLike} className="card__like-button">
@@ -64,7 +60,7 @@ function Card({isAdded, item, onDeleteItem, onAddItem}) {
                 <div className="card__textbox-price">
                     <p className="card__text">Цена:<span className="card__price">{splitMoney(item.price)}</span></p>
                 </div>
-                <button onClick={onPlus} className="card__button-add">
+                <button onClick={onPlus} className={isAdded ? "card__button-add card__button-add--active" : "card__button-add"}>
                     {isAdded ?  <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.39007 0.873821C9.57272 0.680718 9.82093 0.571198 10.0804 0.569196C10.34 0.567194 10.5897 0.672872 10.775 0.863136C10.9604 1.0534 11.0663 1.31278 11.0696 1.58458C11.0729 1.85639 10.9734 2.11852 10.7927 2.31369L5.56607 9.1576C5.47628 9.25886 5.36793 9.34013 5.24749 9.39656C5.12705 9.45298 4.99699 9.48341 4.86507 9.48601C4.73315 9.48862 4.60209 9.46336 4.4797 9.41173C4.35731 9.3601 4.24611 9.28317 4.15274 9.18553L0.687407 5.55723C0.503258 5.36426 0.39984 5.10256 0.399902 4.82972C0.399965 4.55688 0.503503 4.29523 0.68774 4.10235C0.871977 3.90947 1.12182 3.80115 1.38231 3.80121C1.6428 3.80128 1.89259 3.90973 2.07674 4.1027L4.81741 6.97406L9.36407 0.905943C9.37233 0.894901 9.38124 0.884407 9.39074 0.87452L9.39007 0.873821Z" fill="white"/>
                         </svg> : <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
