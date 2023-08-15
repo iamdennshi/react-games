@@ -1,5 +1,5 @@
 import "./styles.scss";
-import splitMoney from "../../utils/splitMoney"
+import {splitMoney} from "../../utils"
 
 
 function Header({onCartOpen, gamesInCart}) {

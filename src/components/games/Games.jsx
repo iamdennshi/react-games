@@ -2,7 +2,7 @@ import "./styles.scss";
 import Card from "../card/Card"
 import { useState } from "react";
 
-function Games({ onDeleteItem, onAddItem, gamesInCart, games}) {
+function Games({onFavorite, gamesInFavorite, onDeleteItem, onAddItem, gamesInCart, games}) {
     const [search, setSearch] = useState("");
 
     const onChangeSearchInput = (e) => {
@@ -10,6 +10,7 @@ function Games({ onDeleteItem, onAddItem, gamesInCart, games}) {
     }
 
     const gamesInCartIDs = gamesInCart.map(item => item.name);
+    const gamesInFavoriteIDs = gamesInFavorite.map(item => item.name);
 
     return (
         <div className="games">
@@ -35,7 +36,7 @@ function Games({ onDeleteItem, onAddItem, gamesInCart, games}) {
                 {
                     games
                         .filter(item => item.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
-                        .map(item => <Card isAdded={gamesInCartIDs.includes(item.name)} key={item.id} item={item} onDeleteItem={onDeleteItem} onAddItem={onAddItem} />)
+                        .map(item => <Card onFavorite={onFavorite} isAdded={gamesInCartIDs.includes(item.name)} key={item.id} isFaivorite={gamesInFavoriteIDs.includes(item.name)} item={item} onDeleteItem={onDeleteItem} onAddItem={onAddItem} />)
                 }
             </div>
         </div>

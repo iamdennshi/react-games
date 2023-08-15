@@ -3,6 +3,7 @@ import Slider from '../slider/Slider';
 import Games from '../games/Games';
 import Cart from '../cart/Cart';
 import {useState, useEffect} from 'react';
+import Favorites from '../favorites/Favorites';
 
 
 const API = "https://64d65505754d3e0f1361f729.mockapi.io";
@@ -11,6 +12,7 @@ const API = "https://64d65505754d3e0f1361f729.mockapi.io";
 function App() {
   const [games, setGames] = useState([]);
   const [gamesInCart, setGamesInCart] = useState([]);
+  const [gamesInFavorite, setGamesInFavorite] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const onCartOpen = () => {
@@ -29,13 +31,10 @@ function App() {
         return response.json()
       }
     })
-
   }
 
   const onAddItem = (game) => {
-    console.log(gamesInCart)
     const gameID = gamesInCart.length !== 0 ? Number(gamesInCart[0].id) + 1 : 1;
-    console.log(gameID)
 
     setGamesInCart(prev => [{...game, id: gameID}, ...prev])
     fetch(`${API}/cart`, {
@@ -47,6 +46,14 @@ function App() {
         return response.json()
       }
     })
+  }
+
+  const onFavorite = (game) => {
+    if (gamesInFavorite.includes(game)) {
+      setGamesInFavorite(prev => prev.filter(item => game !== item));
+    } else {
+      setGamesInFavorite(prev => [game, ...prev]);
+    }
   }
 
   useEffect(() => {
@@ -65,9 +72,10 @@ function App() {
     <div className="App">
       <Header onCartOpen={onCartOpen} gamesInCart={gamesInCart}/>
       <main className='main'>
-        <Slider />
-        <Games games={games} gamesInCart={gamesInCart} onDeleteItem={onDeleteItem} onAddItem={onAddItem}/>
-        <Cart gamesInCart={gamesInCart} onDeleteItem={onDeleteItem} onCartOpen={onCartOpen} isCartOpen={isCartOpen}/>
+        {/* <Slider /> */}
+        {/* <Games onFavorite={onFavorite} gamesInFavorite={gamesInFavorite} games={games} gamesInCart={gamesInCart} onDeleteItem={onDeleteItem} onAddItem={onAddItem}/> */}
+        <Favorites gamesInFavorite={gamesInFavorite} onFavorite={onFavorite} gamesInCart={gamesInCart} onDeleteItem={onDeleteItem} onAddItem={onAddItem}/>
+        <Cart onDeleteItem={onDeleteItem} onCartOpen={onCartOpen} isCartOpen={isCartOpen} gamesInCart={gamesInCart}/>
       </main>
     </div>
   );

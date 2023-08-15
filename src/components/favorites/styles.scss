@@ -1,0 +1,52 @@
+@use "../App/buttons";
+@use "../App//variables" as *;
+
+.favorites {
+    &__back {
+        position: relative;
+        top: 3px;
+        @include buttons.button-action;
+        margin-right: 20px;
+        
+        path {
+            transition: stroke $hover-transition-duration;
+        }
+        &:hover {
+            path {
+                fill: none;
+                stroke: $color-gray-500;
+            }
+        }
+    }
+
+    &__header {
+        display: flex;
+        margin-bottom: 34px;
+    }
+
+    &__title {
+        vertical-align: top;
+        font-weight: 900;
+        font-size: 32px;
+    }
+
+    &__cards {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 34px 50px;
+        flex-wrap: wrap;
+    }
+}
+
+.empty-box {
+    margin: 150px auto 150px;
+
+    &__text {
+        margin-bottom: 34px;
+    }
+}
+
+.button-move {
+    max-width: 312px;
+    margin: auto;
+}

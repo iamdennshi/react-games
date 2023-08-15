@@ -1,20 +1,13 @@
 import "./styles.scss"
 import React from 'react';
-import splitMoney from "../../utils/splitMoney"
+import {splitMoney, splitLikes} from "../../utils"
 
-function splitLikes(likes) {
-    const likesStr = likes.toString();
-    if (likes < 1000) {
-        return likesStr;
-    }
-    return (likes / 1000.0).toFixed(1) + "k";
 
-}
-
-function Card({isAdded, item, onDeleteItem, onAddItem}) {
+function Card({onFavorite, isAdded, isFaivorite, item, onDeleteItem, onAddItem}) {
 
     const onLike = (event) => {
         event.currentTarget.classList.toggle("card__like-button--liked");
+        onFavorite(item);
     }
 
     const onPlus = () => {
@@ -26,7 +19,7 @@ function Card({isAdded, item, onDeleteItem, onAddItem}) {
     }
     return (
         <div className="card">
-            <button onClick={onLike} className="card__like-button">
+            <button onClick={onLike} className={isFaivorite ? "card__like-button card__like-button--liked" : "card__like-button"}>
                 <div className="card__like-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 14" fill="none">
                         <path d="M14.2528 3.2231C14.0327 2.70979 13.7152 2.24463 13.3183 1.85366C12.9211 1.46153 12.4527 1.14991 11.9387 0.935745C11.4058 0.712787 10.8341 0.598665 10.257 0.600002C9.4473 0.600002 8.65734 0.82328 7.97084 1.24503C7.8066 1.34591 7.65058 1.45673 7.50277 1.57746C7.35496 1.45673 7.19893 1.34591 7.0347 1.24503C6.3482 0.82328 5.55823 0.600002 4.74855 0.600002C4.16552 0.600002 3.60056 0.712468 3.06679 0.935745C2.5511 1.15075 2.08631 1.46003 1.68722 1.85366C1.28977 2.24419 0.972275 2.70945 0.752729 3.2231C0.524443 3.75731 0.407837 4.3246 0.407837 4.90843C0.407837 5.45918 0.519516 6.03308 0.741233 6.61691C0.926818 7.10481 1.19288 7.61091 1.53284 8.12196C2.07153 8.93073 2.81223 9.77422 3.73194 10.6293C5.25604 12.0467 6.76535 13.0258 6.82941 13.0655L7.21864 13.3169C7.39109 13.4277 7.6128 13.4277 7.78525 13.3169L8.17449 13.0655C8.23854 13.0241 9.74621 12.0467 11.2719 10.6293C12.1917 9.77422 12.9324 8.93073 13.4711 8.12196C13.811 7.61091 14.0787 7.10481 14.2627 6.61691C14.4844 6.03308 14.5961 5.45918 14.5961 4.90843C14.5977 4.3246 14.4811 3.75731 14.2528 3.2231Z" stroke="#D3D3D3" />

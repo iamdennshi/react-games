@@ -1,5 +1,5 @@
 import "./styles.scss";
-import splitMoney from "../../utils/splitMoney";
+import {splitMoney} from "../../utils";
 
 const RATE = 0.05;
 
@@ -29,7 +29,7 @@ export default function Cart({ onDeleteItem, onCartOpen, isCartOpen, gamesInCart
                     <div className="empty-box">
                         <img className="empty-box__img" src="/img/empty_box.png" alt="Empty box" />
                         <b className="empty-box__title">Корзина пустая</b>
-                        <p className="empty-box__text">Добавьте хотя бы одну игру, чтобы сделать заказ.</p>
+                        <p className="empty-box__text">Добавьте хотя бы одну игру, чтобы сделать заказ</p>
                     </div>
                 }
 
