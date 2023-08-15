@@ -1,15 +1,12 @@
 import "./styles.scss";
 import splitMoney from "../../utils/splitMoney"
-import { useContext } from "react";
-import GlobalContext from "../../context/GlobalContext";
 
 
-function Header({onCartOpen}) {
-  const [games, gamesInCart] = useContext(GlobalContext)
+function Header({onCartOpen, gamesInCart}) {
 
 
   const TOTAL_PRICE = gamesInCart.reduce((currentSum, currentNumber) => {
-    return currentSum + Number(games[currentNumber]?.price);
+    return currentSum + currentNumber.price;
 }, 0);
 
   return (

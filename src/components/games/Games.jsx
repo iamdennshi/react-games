@@ -1,15 +1,15 @@
 import "./styles.scss";
 import Card from "../card/Card"
-import { useContext, useState } from "react";
-import GlobalContext from "../../context/GlobalContext";
+import { useState } from "react";
 
-function Games({ onDeleteItem, onAddItem }) {
-    const [games, gamesInCart] = useContext(GlobalContext);
+function Games({ onDeleteItem, onAddItem, gamesInCart, games}) {
     const [search, setSearch] = useState("");
 
     const onChangeSearchInput = (e) => {
         setSearch(e.target.value)
     }
+
+    const gamesInCartIDs = gamesInCart.map(item => item.name);
 
     return (
         <div className="games">
@@ -35,7 +35,7 @@ function Games({ onDeleteItem, onAddItem }) {
                 {
                     games
                         .filter(item => item.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
-                        .map(item => <Card isAdded={gamesInCart.includes(item.id)} key={item.id} item={item} onDeleteItem={onDeleteItem} onAddItem={onAddItem} />)
+                        .map(item => <Card isAdded={gamesInCartIDs.includes(item.name)} key={item.id} item={item} onDeleteItem={onDeleteItem} onAddItem={onAddItem} />)
                 }
             </div>
         </div>

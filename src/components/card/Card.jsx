@@ -17,11 +17,11 @@ function Card({isAdded, item, onDeleteItem, onAddItem}) {
         event.currentTarget.classList.toggle("card__like-button--liked");
     }
 
-    const onPlus = (event) => {
+    const onPlus = () => {
         if (isAdded) {
-            onDeleteItem(item.id);
+            onDeleteItem(item);
         } else {
-            onAddItem(item.id);
+            onAddItem(item);
         }
     }
     return (
