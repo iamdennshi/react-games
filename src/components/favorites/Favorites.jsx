@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Card from '../card/Card';
 import './styles.scss';
 
@@ -8,11 +9,11 @@ export default function Favorites({ gamesInFavorite, onFavorite, onDeleteItem, o
     return (
         <div className="favorites">
             <div className="favorites__header">
-                <button className="favorites__back">
+                <Link to="/" className="favorites__back">
                     <svg xmlns="http://www.w3.org/2000/svg" width="7" height="12" viewBox="0 0 7 12" fill="none">
                         <path d="M6 11L1 6L6 1" stroke="#D3D3D3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                </button>
+                </Link>
                 <h1 className='favorites__title'>Мои закладки</h1>
             </div>
             {gamesInFavorite.length !== 0 ?
@@ -28,10 +29,10 @@ export default function Favorites({ gamesInFavorite, onFavorite, onDeleteItem, o
                     <b className="empty-box__title">Закладок нет</b>
                     <p className="empty-box__text">Добавьте хотя бы одну закладку,
                         чтобы проще было найти</p>
-                    <button className="button-move button-move--to-left">
+                    <Link to="/" className="button-move button-move--to-left button-move--favorites">
                         <p className="button-move__title">Вернуться назад</p>
                         <img className="button-move__arrow" src="/img/icons/arrow.svg" alt="" />
-                    </button>
+                    </Link>
                 </div>}
         </div>
     );

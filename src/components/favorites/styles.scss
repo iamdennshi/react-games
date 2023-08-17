@@ -3,6 +3,9 @@
 
 .favorites {
     &__back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         position: relative;
         top: 3px;
         @include buttons.button-action;
@@ -46,7 +49,7 @@
     }
 }
 
-.button-move {
+.button-move--favorites {
     max-width: 312px;
     margin: auto;
 }

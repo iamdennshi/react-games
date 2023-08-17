@@ -2,7 +2,6 @@ import "./styles.scss";
 import { useState } from "react";
 import React from "react";
 
-// TODO Сделать бесконечный скрол
 const NUMBER_OF_POSTS = 2;
 const SHIFT = 100.0 / NUMBER_OF_POSTS;
 

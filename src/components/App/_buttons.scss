@@ -24,8 +24,8 @@
 }
 
 @mixin button-move{
-    position: relative;
     display: block;
+    position: relative;
     width: 100%;
     text-align: center;
     background-color: $bg-green;
@@ -33,6 +33,7 @@
     border-radius: 10px;
     padding: 14px 0;
     cursor: pointer;
+    text-decoration: none;
 
     &__title {
         font-weight: 600;

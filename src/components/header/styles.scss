@@ -63,6 +63,28 @@
             content: " руб.";
         }
     }
+    &__like {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            right: -2px;
+            top: 1px;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            display: block;
+            width: 9px;
+            height: 9px;
+            background-color: transparent;
+            transition: $hover-transition-duration;
+        }
+
+        &--exists::after {
+            border-color: $bg-app;
+            background-color: $color-pink;
+        }
+    }
 
     &__like,
     &__profile {
