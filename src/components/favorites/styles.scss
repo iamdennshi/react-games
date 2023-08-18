@@ -41,10 +41,11 @@
     }
 }
 
-.empty-box {
+.empty-box--favorites{
     margin: 150px auto 150px;
 
-    &__text {
+    .empty-box__text {
+        max-width: 300px;
         margin-bottom: 34px;
     }
 }

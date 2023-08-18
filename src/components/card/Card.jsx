@@ -44,8 +44,12 @@ function Card({onFavorite, isAdded, isFaivorite, item, onDeleteItem, onAddItem})
                     <img src="/img/icons/ps4.svg" alt="" />
                 </li>}
 
-                {item.platforms.xbox && <li title="xbox">
+                {item.platforms.xbox && <li title="Xbox">
                         <img src="/img/icons/xbox.svg" alt="" />
+                </li>}
+
+                {item.platforms.nintendo && <li title="Nintendo Switch">
+                        <img src="/img/icons/nintendo.svg" alt="" />
                 </li>}
 
             </ul>
