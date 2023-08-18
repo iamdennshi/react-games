@@ -4,7 +4,6 @@
 $bg-liked: hsl(0, 100%, 97%);
 $bg-liked-hover: hsl(0, 100%, 94%);
 
-
 .card {
   width: 212px;
   border-radius: 32px;
@@ -19,7 +18,6 @@ $bg-liked-hover: hsl(0, 100%, 94%);
     transform: translateY(-10px);
   }
 
-
   &__like-button {
     display: flex;
     padding: 8px;
@@ -30,60 +28,60 @@ $bg-liked-hover: hsl(0, 100%, 94%);
     margin-bottom: 16px;
     transition: $hover-transition-duration;
     background-color: transparent;
-    
+
     &:hover {
       outline-color: $color-gray-500;
       path {
         stroke: $color-gray-500;
       }
     }
-    
+
     &:active {
       .card__like-icon {
-        transform: scale(.8);
+        transform: scale(0.8);
       }
     }
 
     &--liked {
-        outline: none;
-        background-color: $bg-liked;
+      outline: none;
+      background-color: $bg-liked;
 
-        &:hover {
-            background: $bg-liked-hover;
-            path {
-            stroke: none;
-            }
+      &:hover {
+        background: $bg-liked-hover;
+        path {
+          stroke: none;
         }
-        .card__like-icon {
-            path {
-            fill: $color-pink;
-            stroke: none;
-            }
+      }
+      .card__like-icon {
+        path {
+          fill: $color-pink;
+          stroke: none;
         }
-        .card__like-value {
-            color: $color-pink;
-        }
+      }
+      .card__like-value {
+        color: $color-pink;
+      }
     }
   }
-    
+
   &__like-icon {
     margin-right: 8px;
     width: 16px;
     height: 15px;
-    transition: scale .1s;
+    transition: scale 0.1s;
     path {
       transition: stroke $hover-transition-duration;
     }
   }
-    
+
   &__like-value {
     color: $color-gray-500;
     font-size: 12px;
   }
-  
+
   &__logo {
     height: 70px;
-    margin-bottom:  16px;
+    margin-bottom: 16px;
     // background-color: red;
   }
 
@@ -92,11 +90,11 @@ $bg-liked-hover: hsl(0, 100%, 94%);
     height: 100%;
     object-fit: contain;
   }
-  
+
   &__title {
     margin-bottom: 6px;
   }
-  
+
   &__platforms {
     display: flex;
     margin-bottom: 8px;
@@ -106,19 +104,19 @@ $bg-liked-hover: hsl(0, 100%, 94%);
       display: block;
     }
   }
-  
+
   &__footer {
     display: flex;
     justify-content: space-between;
   }
-  
+
   &__text {
     color: $color-gray-500;
     font-size: 12px;
     font-weight: 500;
     text-transform: uppercase;
   }
-  
+
   &__price {
     display: block;
     font-weight: 700;
@@ -127,26 +125,24 @@ $bg-liked-hover: hsl(0, 100%, 94%);
     &:after {
       content: " руб.";
       text-transform: lowercase;
-
     }
   }
 
   &__button-add {
     @include buttons.button-action;
-  
+
     &--active {
-      background: #2CD250;
+      background: #2cd250;
       outline: none;
-      
+
       &:hover {
         path {
           fill: white;
         }
-        background: #17C43D;
+        background: #17c43d;
       }
     }
   }
-
 }
 
 .item {
@@ -159,34 +155,34 @@ $bg-liked-hover: hsl(0, 100%, 94%);
   margin-bottom: 27px;
 
   &__logo {
-      width: 80px;
+    width: 80px;
   }
 
   &__img {
-      height: 100%;
-      width: 100%;
-      object-fit: contain;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
   }
 
   &__info {
-      flex-grow: 1;
+    flex-grow: 1;
   }
 
   &__title {
-      font-weight: 400;
-      margin-bottom: 8px;
+    font-weight: 400;
+    margin-bottom: 8px;
   }
 
   &__price {
-      display: block;
-      font-weight: 700;
+    display: block;
+    font-weight: 700;
 
-      &::after {
-          content: " руб.";
-      }
+    &::after {
+      content: " руб.";
+    }
   }
 
-  &:last-of-type{
-      margin-bottom: 0;
+  &:last-of-type {
+    margin-bottom: 0;
   }
 }

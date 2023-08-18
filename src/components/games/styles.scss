@@ -1,77 +1,74 @@
 @use "../App/variables" as *;
 
-
 .games {
-    &__header {
-        margin: 34px 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+  &__header {
+    margin: 34px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
+  &__title {
+    font-size: 32px;
+    font-weight: 900;
+    white-space: nowrap;
+    overflow: hidden;
+
+    b {
+      font-weight: 900;
+      color: $color-gray-700;
     }
+  }
 
-    &__title {
-        font-size: 32px;
-        font-weight: 900;
-        white-space: nowrap;
-        overflow: hidden;
+  &__search {
+    position: relative;
+    flex-basis: 272px;
+    position: relative;
+    padding: 13px 46px;
+    background-color: $color-gray-200;
+    border-radius: 10px;
+    transition: outline $hover-transition-duration;
+    outline: 1px solid #fff;
+    margin-left: 16px;
 
-        b {
-            font-weight: 900;
-            color: $color-gray-700;
-        }
+    &:hover {
+      outline: 1px solid $color-gray-500;
     }
+  }
 
-    &__search {
-        position: relative;
-        flex-basis: 272px;
-        position: relative;
-        padding: 13px 46px;
-        background-color: $color-gray-200;
-        border-radius: 10px;
-        transition: outline $hover-transition-duration;
-        outline: 1px solid #fff;
-        margin-left: 16px;
+  &__search-icon {
+    position: absolute;
+    left: 23px;
+    top: 16px;
+  }
 
-        &:hover {
-            outline: 1px solid $color-gray-500;
-        }
-    }
+  &__input {
+    width: 177px;
+    font-size: 16px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: $color-gray-700;
+    outline: none;
+  }
+  &__input::placeholder {
+    color: $color-gray-500;
+  }
 
-
-    &__search-icon {
-        position: absolute;
-        left: 23px;
-        top:16px;
-    }
-
-    &__input {
-        width: 177px;
-        font-size: 16px;
-        padding: 0;
-        background: transparent;
-        border: none;
-        color: $color-gray-700;
-        outline: none;
-    }
-    &__input::placeholder {
-        color: $color-gray-500;
-    }
-
-    &__search-button {
-        position: absolute;
-        top: 6px;
-        right: 10px;
-        background-color: transparent;
-        height: 32px;
-        width: 32px;
-        cursor: pointer;
-    }
+  &__search-button {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    background-color: transparent;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+  }
 }
 
 .cards {
-    display: flex;
-    justify-content: space-evenly;
-    gap: 34px 50px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 34px 50px;
+  flex-wrap: wrap;
 }

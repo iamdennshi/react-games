@@ -1,105 +1,104 @@
 @use "../App/variables" as *;
 
 .header {
+  display: flex;
+  justify-content: space-between;
+  padding: 44px 65px;
+  border-bottom: 1px solid $color-gray-300;
+
+  &__left {
     display: flex;
-    justify-content: space-between;
-    padding: 44px 65px;
-    border-bottom: 1px solid $color-gray-300;
+  }
 
-    &__left {
-        display: flex;
+  &__link {
+    margin-right: 12px;
+  }
+
+  &__logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  &__title {
+    font-size: 20px;
+  }
+
+  &__subtitle {
+    color: $color-gray-500;
+    letter-spacing: 0.42px;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  &__cart {
+    cursor: pointer;
+    svg path {
+      transition: $hover-transition-duration;
     }
 
-    &__link {
-        margin-right: 12px;
+    &:hover {
+      .header__money {
+        color: $color-gray-700;
+      }
+
+      svg path {
+        stroke: $color-gray-700;
+      }
     }
-    
-    &__logo {
-        width: 40px;
-        height: 40px;
+  }
+
+  &__money {
+    vertical-align: super;
+    padding-left: 12px;
+    color: $color-gray-500;
+    font-weight: 500;
+    transition: $hover-transition-duration;
+
+    &::after {
+      content: " руб.";
     }
+  }
+  &__like {
+    position: relative;
 
-    &__title {
-        font-size: 20px;
-    }
-
-    &__subtitle {
-        color: $color-gray-500;
-        letter-spacing: 0.42px;
-    }
-
-    &__right {
-        display: flex;
-        align-items: center;
-        gap: 32px;
-    }
-
-    &__cart {
-        cursor: pointer;
-        svg path {
-            transition: $hover-transition-duration;
-        }
-
-
-        &:hover {
-            .header__money {
-                color: $color-gray-700;
-            }
-
-            svg path {
-                stroke: $color-gray-700;
-            }
-        }
+    &::after {
+      content: "";
+      position: absolute;
+      right: -2px;
+      top: 1px;
+      border: 1px solid transparent;
+      border-radius: 50%;
+      display: block;
+      width: 9px;
+      height: 9px;
+      background-color: transparent;
+      transition: $hover-transition-duration;
     }
 
-    &__money {
-        vertical-align: super;
-        padding-left: 12px;
-        color: $color-gray-500;
-        font-weight: 500;
-        transition: $hover-transition-duration;
-
-        &::after {
-            content: " руб.";
-        }
+    &--exists::after {
+      border-color: $bg-app;
+      background-color: $color-pink;
     }
-    &__like {
-        position: relative;
+  }
 
-        &::after {
-            content: "";
-            position: absolute;
-            right: -2px;
-            top: 1px;
-            border: 1px solid transparent;
-            border-radius: 50%;
-            display: block;
-            width: 9px;
-            height: 9px;
-            background-color: transparent;
-            transition: $hover-transition-duration;
-        }
+  &__like,
+  &__profile {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
 
-        &--exists::after {
-            border-color: $bg-app;
-            background-color: $color-pink;
-        }
+    svg path {
+      transition: $hover-transition-duration;
     }
 
-    &__like,
-    &__profile {
-        height: 20px;
-        width: 20px;
-        cursor: pointer;
-
-        svg path {
-            transition: $hover-transition-duration;
-        }
-
-        &:hover {
-            svg path {
-                fill: $color-gray-700;
-            }
-        }
+    &:hover {
+      svg path {
+        fill: $color-gray-700;
+      }
     }
+  }
 }

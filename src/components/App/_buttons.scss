@@ -1,73 +1,73 @@
 @use "./variables" as *;
 
 @mixin button-action {
-    background: white;
-    border: none;
-    height: 32px;
-    width: 32px;
-    border-radius: 8px;
-    outline: 1px solid $color-gray-300;
-    cursor: pointer;
-    border: none;
-    transition: outline $hover-transition-duration, fill $hover-transition-duration, translateY .1s, background $hover-transition-duration;
-    
-    &:active {
-      transform: translateY(2px);
+  background: white;
+  border: none;
+  height: 32px;
+  width: 32px;
+  border-radius: 8px;
+  outline: 1px solid $color-gray-300;
+  cursor: pointer;
+  border: none;
+  transition: outline $hover-transition-duration,
+    fill $hover-transition-duration, translateY 0.1s,
+    background $hover-transition-duration;
+
+  &:active {
+    transform: translateY(2px);
+  }
+
+  &:hover {
+    outline-color: $color-gray-500;
+    path {
+      fill: $color-gray-500;
     }
-    
-    &:hover {
-      outline-color: $color-gray-500;
-      path {
-        fill: $color-gray-500;
-      }
-    }
+  }
 }
 
-@mixin button-move{
-    display: block;
-    position: relative;
-    width: 100%;
-    text-align: center;
-    background-color: $bg-green;
-    color: $bg-app;
-    border-radius: 10px;
-    padding: 14px 0;
-    cursor: pointer;
-    text-decoration: none;
+@mixin button-move {
+  display: block;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  background-color: $bg-green;
+  color: $bg-app;
+  border-radius: 10px;
+  padding: 14px 0;
+  cursor: pointer;
+  text-decoration: none;
 
-    &__title {
-        font-weight: 600;
+  &__title {
+    font-weight: 600;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: calc(50% - 7px);
+  }
+
+  &--to-left {
+    img {
+      transition: left $hover-transition-duration ease-in-out;
+      left: 37px;
+      transform: rotateY(180deg);
     }
-
-    &__arrow {
-        position: absolute;
-        top: calc(50% - 7px);
-        
+    &:hover {
+      img {
+        left: 30px;
+      }
     }
+  }
 
-    &--to-left {
-        img {
-            transition: left $hover-transition-duration ease-in-out;
-            left: 37px;
-            transform: rotateY(180deg);
-        }
-        &:hover {
-            img {
-                left: 30px;
-            }
-        }
+  &--to-right {
+    img {
+      transition: right $hover-transition-duration ease-in-out;
+      right: 37px;
     }
-
-    &--to-right {
-        img {
-            transition: right $hover-transition-duration ease-in-out;
-            right: 37px;
-        }
-        &:hover {
-            img {
-                right: 30px;
-            }
-        }
-
+    &:hover {
+      img {
+        right: 30px;
+      }
     }
+  }
 }

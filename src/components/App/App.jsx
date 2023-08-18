@@ -2,6 +2,7 @@ import Header from '../header/Header';
 import Slider from '../slider/Slider';
 import Games from '../games/Games';
 import Cart from '../cart/Cart';
+import Error from '../error/Error'
 import { useState, useEffect } from 'react';
 import Favorites from '../favorites/Favorites';
 import { Switch, Route } from 'react-router-dom';
@@ -82,6 +83,9 @@ export default function App() {
           </Route>
           <Route path="/favorites" exact>
             <Favorites gamesInFavorite={gamesInFavorite} onFavorite={onFavorite} gamesInCart={gamesInCart} onDeleteItem={onDeleteItem} onAddItem={onAddItem} />
+          </Route>
+          <Route path="*">
+            <Error />
           </Route>
         </Switch>
         <Cart onDeleteItem={onDeleteItem} onCartOpen={onCartOpen} isCartOpen={isCartOpen} gamesInCart={gamesInCart} />

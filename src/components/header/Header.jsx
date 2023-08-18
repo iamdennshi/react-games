@@ -1,10 +1,8 @@
 import "./styles.scss";
-import { splitMoney } from "../../utils"
-import { Link } from 'react-router-dom';
+import { splitMoney } from "../../utils";
+import { Link } from "react-router-dom";
 
 function Header({ gamesInFavorite, onCartOpen, gamesInCart }) {
-
-
   const TOTAL_PRICE = gamesInCart.reduce((currentSum, currentNumber) => {
     return currentSum + currentNumber.price;
   }, 0);
@@ -13,11 +11,7 @@ function Header({ gamesInFavorite, onCartOpen, gamesInCart }) {
     <header className="header">
       <div className="header__left">
         <Link className="header__link" to="/">
-          <img
-            className="header__logo"
-            alt="logo"
-            src="/img/logo.png"
-          ></img>
+          <img className="header__logo" alt="logo" src="/img/logo.png"></img>
         </Link>
         <div className="header__name">
           <h2 className="header__title">REACT GAMES</h2>
@@ -57,7 +51,13 @@ function Header({ gamesInFavorite, onCartOpen, gamesInCart }) {
           </svg>
           <span className="header__money">{splitMoney(TOTAL_PRICE)}</span>
         </li>
-        <li className={gamesInFavorite.length > 0 ? "header__like header__like--exists" : "header__like"}>
+        <li
+          className={
+            gamesInFavorite.length > 0
+              ? "header__like header__like--exists"
+              : "header__like"
+          }
+        >
           <Link to="/favorites">
             <svg
               viewBox="0 0 21 19"

@@ -2,137 +2,131 @@
 @use "../App/buttons";
 
 .overlay {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0,0,0,0.6);
-    transition: 0.5s;
-    opacity: 0;
-    visibility: hidden;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: 0.5s;
+  opacity: 0;
+  visibility: hidden;
 
-    &--active {
-        opacity: 1;
-        visibility: visible;
-    }
+  &--active {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
-
 .button-action {
-    @include buttons.button_action;
+  @include buttons.button_action;
 }
 
 .button-move {
-    @include buttons.button-move;
+  @include buttons.button-move;
 }
 
 .cart {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  position: fixed;
+  min-height: 100vh;
+  top: 0;
+  right: -100%;
+  background-color: $bg-app;
+  width: 380px;
+  padding: 0 20px;
+  transition: right 0.5s;
+
+  &--active {
+    right: 0;
+  }
+
+  &__header {
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
-    position: fixed;
-    min-height: 100vh;
-    top: 0;
-    right:-100%;
-    background-color: $bg-app;
-    width: 380px;
-    padding: 0 20px;
-    transition: right 0.5s;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 27px;
+  }
 
-    &--active {
-        right: 0;
-    }
+  &__title {
+    font-weight: 900;
+    font-size: 32px;
+  }
 
+  &__footer {
+    margin-top: 27px;
+    margin-bottom: 38px;
+    font-size: 16px;
+  }
 
-    &__header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 50px;
-        margin-bottom: 27px;
-    }
+  &__total,
+  &__tax {
+    display: flex;
+    column-gap: 8px;
+    margin-bottom: 20px;
+  }
 
-    &__title {
-        font-weight: 900;
-        font-size: 32px;
-    }
-
-    &__footer {
-        margin-top: 27px;
-        margin-bottom: 38px;
-        font-size: 16px;
-    }
-
-    &__total,
-    &__tax {
-        display: flex;
-        column-gap: 8px;
-        margin-bottom: 20px;
-    }
-
-    &__line {
-        flex-grow: 1;
-        border-bottom: 1px dashed $color-gray-500;
-        margin-bottom: 5px;
-    }
-    &__total-value::after,
-    &__tax-value::after {
-        content: " руб.";
-    }
-    &__total-value,
-    &__tax-value {
-        font-weight: 600;
-    }
-
+  &__line {
+    flex-grow: 1;
+    border-bottom: 1px dashed $color-gray-500;
+    margin-bottom: 5px;
+  }
+  &__total-value::after,
+  &__tax-value::after {
+    content: " руб.";
+  }
+  &__total-value,
+  &__tax-value {
+    font-weight: 600;
+  }
 }
-
 
 .items {
-    overflow: auto;
-    flex-grow: 1;
-    flex-basis: 100px;
+  overflow: auto;
+  flex-grow: 1;
+  flex-basis: 100px;
 }
-
-
 
 .empty-box,
 .order-placed {
-    text-align: center;
-    
-    &__img {
-        display: block;
-        margin: auto;
-        margin-bottom: 13px;
-    }
+  text-align: center;
 
-    &__title{
-        display: block;
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: 13px;
-    }
+  &__img {
+    display: block;
+    margin: auto;
+    margin-bottom: 13px;
+  }
 
-    &__text {
-        color: $color-gray-500;
-        font-size: 16px;
-        display: block;
-        margin: auto;
-    }
+  &__title {
+    display: block;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 13px;
+  }
+
+  &__text {
+    color: $color-gray-500;
+    font-size: 16px;
+    display: block;
+    margin: auto;
+  }
 }
 
 .empty-box {
-    &__text {
-        max-width: 230px;
-    }
+  &__text {
+    max-width: 230px;
+  }
 }
 
 .order-placed {
-    &__title {
-        color: $bg-green;
-    }
-    &__img {
-        width: 83px;
-    }
+  &__title {
+    color: $bg-green;
+  }
+  &__img {
+    width: 83px;
+  }
 
-    &__text {
-        max-width: 260px;
-    }
+  &__text {
+    max-width: 260px;
+  }
 }
