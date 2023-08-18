@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { randomEmoji } from "../../utils";
 
 export default function Error() {
+  const emoji = useMemo(() => randomEmoji(), []);
+
   return (
     <div className="empty-box empty-box--full">
-      <img
-        className="empty-box__img"
-        src="/img/emoji/emoji-1.png"
-        alt="Empty box"
-      />
+      <p className="empty-box__emoji">{emoji}</p>
       <b className="empty-box__title">Что-то не так</b>
       <p className="empty-box__text">Вы зашли на не существующую страницу</p>
       <Link

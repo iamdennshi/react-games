@@ -35,4 +35,9 @@ function splitLikes(likes) {
   return (likes / 1000.0).toFixed(1) + "k";
 }
 
-export { splitMoney, splitLikes };
+function randomEmoji() {
+  const emoji = ["🥺", "😢", "😫", "😩", "😔", "😐"];
+  return emoji[Math.floor(Math.random() * emoji.length)];
+}
+
+export { splitMoney, splitLikes, randomEmoji };

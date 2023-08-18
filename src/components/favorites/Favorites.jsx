@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Card from "../card/Card";
 import "./styles.scss";
+import { randomEmoji } from "../../utils";
+import { useMemo } from "react";
 
-export default function Favorites({
+function Favorites({
   gamesInFavorite,
   onFavorite,
   onDeleteItem,
@@ -11,6 +13,7 @@ export default function Favorites({
 }) {
   const gamesInCartIDs = gamesInCart.map((item) => item.name);
   const gamesInFavoriteIDs = gamesInFavorite.map((item) => item.name);
+  const emoji = useMemo(() => randomEmoji(), []);
 
   return (
     <div className="favorites">
@@ -53,11 +56,7 @@ export default function Favorites({
         </>
       ) : (
         <div className="empty-box empty-box--full">
-          <img
-            className="empty-box__img"
-            src="/img/emoji/emoji-1.png"
-            alt="Empty box"
-          />
+          <p className="empty-box__emoji">{emoji}</p>
           <b className="empty-box__title">Закладок нет</b>
           <p className="empty-box__text">
             Добавьте хотя бы одну закладку, чтобы проще было найти
@@ -78,3 +77,5 @@ export default function Favorites({
     </div>
   );
 }
+
+export default Favorites;
