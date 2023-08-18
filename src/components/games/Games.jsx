@@ -16,9 +16,6 @@ function Games({
     setSearch(e.target.value);
   };
 
-  const gamesInCartIDs = gamesInCart.map((item) => item.name);
-  const gamesInFavoriteIDs = gamesInFavorite.map((item) => item.name);
-
   return (
     <div className="games">
       <div className="games__header">
@@ -68,9 +65,9 @@ function Games({
           .map((item) => (
             <Card
               onFavorite={onFavorite}
-              isAdded={gamesInCartIDs.includes(item.name)}
+              isAdded={gamesInCart.some((i) => i.name === item.name)}
               key={item.id}
-              isFaivorite={gamesInFavoriteIDs.includes(item.name)}
+              isFaivorite={gamesInFavorite.some((i) => i.name === item.name)}
               item={item}
               onDeleteItem={onDeleteItem}
               onAddItem={onAddItem}

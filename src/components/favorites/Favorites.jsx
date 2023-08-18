@@ -11,8 +11,6 @@ function Favorites({
   onAddItem,
   gamesInCart,
 }) {
-  const gamesInCartIDs = gamesInCart.map((item) => item.name);
-  const gamesInFavoriteIDs = gamesInFavorite.map((item) => item.name);
   const emoji = useMemo(() => randomEmoji(), []);
 
   return (
@@ -44,8 +42,8 @@ function Favorites({
             {gamesInFavorite.map((item) => (
               <Card
                 onFavorite={onFavorite}
-                isFaivorite={gamesInFavoriteIDs.includes(item.name)}
-                isAdded={gamesInCartIDs.includes(item.name)}
+                isAdded={gamesInCart.some((i) => i.name === item.name)}
+                isFaivorite={gamesInFavorite.some((i) => i.name === item.name)}
                 key={item.id}
                 item={item}
                 onDeleteItem={onDeleteItem}
