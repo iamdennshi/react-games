@@ -1,6 +1,7 @@
 import "./styles.scss";
 import Card from "../card/Card";
 import { useState } from "react";
+import Loader from "../loader/Loader";
 
 function Games({
   onFavorite,
@@ -58,21 +59,25 @@ function Games({
         </div>
       </div>
       <div className="cards">
-        {games
-          .filter((item) =>
-            item.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-          )
-          .map((item) => (
-            <Card
-              onFavorite={onFavorite}
-              isAdded={gamesInCart.some((i) => i.name === item.name)}
-              key={item.id}
-              isFaivorite={gamesInFavorite.some((i) => i.name === item.name)}
-              item={item}
-              onDeleteItem={onDeleteItem}
-              onAddItem={onAddItem}
-            />
-          ))}
+        {games.length > 0 ? (
+          games
+            .filter((item) =>
+              item.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+            )
+            .map((item) => (
+              <Card
+                onFavorite={onFavorite}
+                isAdded={gamesInCart.some((i) => i.name === item.name)}
+                key={item.id}
+                isFaivorite={gamesInFavorite.some((i) => i.name === item.name)}
+                item={item}
+                onDeleteItem={onDeleteItem}
+                onAddItem={onAddItem}
+              />
+            ))
+        ) : (
+          <Loader />
+        )}
       </div>
     </div>
   );
