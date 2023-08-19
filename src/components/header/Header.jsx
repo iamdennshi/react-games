@@ -1,6 +1,7 @@
 import "./styles.scss";
 import { splitMoney } from "../../utils";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
 
 function Header({ gamesInFavorite, onCartOpen, gamesInCart }) {
   const TOTAL_PRICE = gamesInCart.reduce((currentSum, currentNumber) => {
@@ -11,7 +12,7 @@ function Header({ gamesInFavorite, onCartOpen, gamesInCart }) {
     <header className="header">
       <div className="header__left">
         <Link className="header__link" to="/">
-          <img className="header__logo" alt="logo" src="/img/logo.png"></img>
+          <img className="header__logo" alt="logo" src={logo}></img>
         </Link>
         <div className="header__name">
           <h2 className="header__title">REACT GAMES</h2>

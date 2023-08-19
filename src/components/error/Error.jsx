@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { randomEmoji } from "../../utils";
 
+import arrow from "../../assets/icons/arrow.svg";
 export default function Error() {
   const emoji = useMemo(() => randomEmoji(), []);
 
@@ -15,7 +16,7 @@ export default function Error() {
         className="button-move button-move--to-left button-move--full"
       >
         <p className="button-move__title">Вернуться назад</p>
-        <img className="button-move__arrow" src="/img/icons/arrow.svg" alt="" />
+        <img className="button-move__arrow" src={arrow} alt="" />
       </Link>
     </div>
   );

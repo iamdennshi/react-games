@@ -1,6 +1,11 @@
 import "./styles.scss";
 import { useState } from "react";
 
+import hogwartsLogo from "../../assets/games/hogwarts.png";
+import hogwartsPoster from "../../assets/sliders/hogwarts.png";
+import atomicLogo from "../..//assets/games/atomic.svg";
+import atomicPoster from "../../assets/sliders/atomic.png";
+
 const NUMBER_OF_POSTS = 2;
 const SHIFT = 100.0 / NUMBER_OF_POSTS;
 
@@ -27,7 +32,7 @@ function Slider() {
       >
         <li className="slide slide--hogwarts">
           <img
-            src="/img/games/hogwarts.png"
+            src={hogwartsLogo}
             alt=""
             className="slide__img slide__img--hogwarts"
           />
@@ -43,13 +48,13 @@ function Slider() {
           </button>
           <img
             className="slide__poster slide__poster--hogwarts"
-            src="/img/sliders/hogwarts.png"
+            src={hogwartsPoster}
             alt="poster-1"
           />
         </li>
         <li className="slide slide--atomic">
           <img
-            src="/img/games/atomic.svg"
+            src={atomicLogo}
             alt=""
             className="slide__img slide__img--atomic"
           />
@@ -63,7 +68,7 @@ function Slider() {
           </button>
           <img
             className="slide__poster slide__poster--atomic"
-            src="/img/sliders/atomic.png"
+            src={atomicPoster}
             alt="poster-2"
           />
         </li>

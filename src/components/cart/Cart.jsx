@@ -1,7 +1,9 @@
 import "./styles.scss";
 import { splitMoney } from "../../utils";
 import { useState } from "react";
-
+import orderPlaced from "../../assets/order_placed.png";
+import emptyBox from "../../assets/empty_box.png";
+import arrow from "../../assets/icons/arrow.svg";
 const RATE = 0.05;
 
 export default function Cart({
@@ -65,7 +67,7 @@ export default function Cart({
           <div className="order-placed">
             <img
               className="order-placed__img"
-              src="/img/order_placed.png"
+              src={orderPlaced}
               alt="Order placed"
             />
             <b className="order-placed__title">Заказ оформлен</b>
@@ -76,11 +78,7 @@ export default function Cart({
           </div>
         ) : (
           <div className="empty-box">
-            <img
-              className="empty-box__img"
-              src="/img/empty_box.png"
-              alt="Empty box"
-            />
+            <img className="empty-box__img" src={emptyBox} alt="Empty box" />
             <b className="empty-box__title">Корзина пустая</b>
             <p className="empty-box__text">
               Добавьте хотя бы одну игру, чтобы сделать заказ
@@ -110,11 +108,7 @@ export default function Cart({
                 className="button-move button-move--to-right"
               >
                 <p className="button-move__title">Оформить заказ</p>
-                <img
-                  className="button-move__arrow"
-                  src="/img/icons/arrow.svg"
-                  alt=""
-                />
+                <img className="button-move__arrow" src={arrow} alt="" />
               </button>
             </>
           ) : (
@@ -123,11 +117,7 @@ export default function Cart({
               className="button-move button-move--to-left"
             >
               <p className="button-move__title">Вернуться назад</p>
-              <img
-                className="button-move__arrow"
-                src="/img/icons/arrow.svg"
-                alt=""
-              />
+              <img className="button-move__arrow" src={arrow} alt="" />
             </button>
           )}
         </div>

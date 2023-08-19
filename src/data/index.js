@@ -1,8 +1,12 @@
+import atomic from "../assets/games/atomic.png";
+import hogwarts from "../assets/games/hogwarts.png";
+import sof from "../assets/games/sons-of-the-forest.png";
+import metro from "../assets/games/metro.png";
 export const games = [
   {
     id: 1,
     name: "Atomic Heart",
-    imgUrl: "/img/games/atomic.png",
+    imgUrl: atomic,
     price: 1000,
     likes: 3100,
     platforms: {
@@ -12,7 +16,7 @@ export const games = [
   {
     id: 2,
     name: "Hogwarts Legacy",
-    imgUrl: "/img/games/hogwarts.png",
+    imgUrl: hogwarts,
     price: 2000,
     likes: 3100,
     platforms: {
@@ -23,7 +27,7 @@ export const games = [
   {
     id: 3,
     name: "Sons Of The Forest",
-    imgUrl: "/img/games/sons-of-the-forest.png",
+    imgUrl: sof,
     price: 3000,
     likes: 3100,
     platforms: {
@@ -35,7 +39,7 @@ export const games = [
   {
     id: 4,
     name: "Metro Exodus",
-    imgUrl: "/img/games/metro.png",
+    imgUrl: metro,
     price: 4000,
     likes: 3100,
     platforms: {

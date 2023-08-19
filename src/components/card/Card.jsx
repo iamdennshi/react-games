@@ -2,6 +2,11 @@ import "./styles.scss";
 import React from "react";
 import { splitMoney, splitLikes } from "../../utils";
 
+import pc from "../../assets/icons/PC.svg";
+import ps4 from "../../assets/icons/ps4.svg";
+import xbox from "../../assets/icons/xbox.svg";
+import nintendo from "../../assets/icons/nintendo.svg";
+
 function Card({
   onFavorite,
   isAdded,
@@ -55,25 +60,25 @@ function Card({
       <ul className="card__platforms">
         {item.platforms.pc && (
           <li title="PC">
-            <img src="/img/icons/PC.svg" alt="" />
+            <img src={pc} alt="" />
           </li>
         )}
 
         {item.platforms.ps4 && (
           <li title="PS4">
-            <img src="/img/icons/ps4.svg" alt="" />
+            <img src={ps4} alt="" />
           </li>
         )}
 
         {item.platforms.xbox && (
           <li title="Xbox">
-            <img src="/img/icons/xbox.svg" alt="" />
+            <img src={xbox} alt="" />
           </li>
         )}
 
         {item.platforms.nintendo && (
           <li title="Nintendo Switch">
-            <img src="/img/icons/nintendo.svg" alt="" />
+            <img src={nintendo} alt="" />
           </li>
         )}
       </ul>

@@ -2,6 +2,7 @@ import "./styles.scss";
 import Card from "../card/Card";
 import { useState } from "react";
 import Loader from "../loader/Loader";
+import searchIcon from "../../assets/icons/search.svg";
 
 function Games({
   onFavorite,
@@ -26,7 +27,7 @@ function Games({
         </h1>
         <div className="games__search">
           <img
-            src="/img/icons/search.svg"
+            src={searchIcon}
             alt="icon serach"
             className="games__search-icon"
           />

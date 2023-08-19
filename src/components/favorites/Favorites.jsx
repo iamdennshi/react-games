@@ -4,7 +4,7 @@ import "./styles.scss";
 import { randomEmoji } from "../../utils";
 import { useMemo } from "react";
 import Loader from "../loader/Loader";
-
+import arrow from "../../assets/icons/arrow.svg";
 function Favorites({
   gamesInFavorite,
   onFavorite,
@@ -72,11 +72,7 @@ function Favorites({
             className="button-move button-move--to-left button-move--full"
           >
             <p className="button-move__title">Вернуться назад</p>
-            <img
-              className="button-move__arrow"
-              src="/img/icons/arrow.svg"
-              alt=""
-            />
+            <img className="button-move__arrow" src={arrow} alt="" />
           </Link>
         </div>
       )}
