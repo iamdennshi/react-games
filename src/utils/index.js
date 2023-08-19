@@ -40,4 +40,8 @@ function randomEmoji() {
   return emoji[Math.floor(Math.random() * emoji.length)];
 }
 
-export { splitMoney, splitLikes, randomEmoji };
+async function fakeNetwork() {
+  return new Promise((e) => setInterval(e, 800));
+}
+
+export { splitMoney, splitLikes, randomEmoji, fakeNetwork };

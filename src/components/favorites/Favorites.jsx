@@ -3,6 +3,7 @@ import Card from "../card/Card";
 import "./styles.scss";
 import { randomEmoji } from "../../utils";
 import { useMemo } from "react";
+import Loader from "../loader/Loader";
 
 function Favorites({
   gamesInFavorite,
@@ -10,12 +11,15 @@ function Favorites({
   onDeleteItem,
   onAddItem,
   gamesInCart,
+  isLoading,
 }) {
   const emoji = useMemo(() => randomEmoji(), []);
 
+  console.log(isLoading);
+
   return (
     <div className="favorites">
-      {gamesInFavorite.length !== 0 ? (
+      {gamesInFavorite.length !== 0 || isLoading ? (
         <>
           <div className="favorites__header">
             <Link to="/" className="favorites__back">
@@ -39,17 +43,23 @@ function Favorites({
           </div>
 
           <div className="favorites__cards">
-            {gamesInFavorite.map((item) => (
-              <Card
-                onFavorite={onFavorite}
-                isAdded={gamesInCart.some((i) => i.name === item.name)}
-                isFaivorite={gamesInFavorite.some((i) => i.name === item.name)}
-                key={item.id}
-                item={item}
-                onDeleteItem={onDeleteItem}
-                onAddItem={onAddItem}
-              />
-            ))}
+            {!isLoading ? (
+              gamesInFavorite.map((item) => (
+                <Card
+                  onFavorite={onFavorite}
+                  isAdded={gamesInCart.some((i) => i.name === item.name)}
+                  isFaivorite={gamesInFavorite.some(
+                    (i) => i.name === item.name
+                  )}
+                  key={item.id}
+                  item={item}
+                  onDeleteItem={onDeleteItem}
+                  onAddItem={onAddItem}
+                />
+              ))
+            ) : (
+              <Loader />
+            )}
           </div>
         </>
       ) : (

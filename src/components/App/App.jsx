@@ -6,63 +6,65 @@ import Error from "../error/Error";
 import { useState, useEffect } from "react";
 import Favorites from "../favorites/Favorites";
 import { Switch, Route } from "react-router-dom";
-
-const API = "https://64d65505754d3e0f1361f729.mockapi.io";
+import { games as gamesFromLocalFile } from "../../data";
+import { fakeNetwork } from "../../utils";
 
 export default function App() {
   const [games, setGames] = useState([]);
   const [gamesInCart, setGamesInCart] = useState([]);
   const [gamesInFavorite, setGamesInFavorite] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isLoading, setIsLoadgin] = useState(true);
 
   const onCartOpen = () => {
     setIsCartOpen(!isCartOpen);
   };
 
   const onDeleteItem = (game) => {
-    const gameID = gamesInCart.filter((item) => item.name === game.name)[0].id;
-
-    setGamesInCart((prev) => prev.filter((item) => item.name !== game.name));
-    fetch(`${API}/cart/${gameID}`, {
-      method: "DELETE",
-      headers: { "content-type": "application/json" },
-    }).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
+    setGamesInCart((prev) => {
+      const newCart = prev.filter((item) => item.name !== game.name);
+      localStorage.setItem("cart", JSON.stringify(newCart));
+      return newCart;
     });
   };
 
   const onAddItem = (game) => {
     const gameID = gamesInCart.length !== 0 ? Number(gamesInCart[0].id) + 1 : 1;
 
-    setGamesInCart((prev) => [{ ...game, id: gameID }, ...prev]);
-    fetch(`${API}/cart`, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(game),
-    }).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
+    setGamesInCart((prev) => {
+      const newCart = [{ ...game, id: gameID }, ...prev];
+      localStorage.setItem("cart", JSON.stringify(newCart));
+      return newCart;
     });
   };
 
   const onFavorite = (game) => {
     if (gamesInFavorite.includes(game)) {
-      setGamesInFavorite((prev) => prev.filter((item) => game !== item));
+      setGamesInFavorite((prev) => {
+        const newFav = prev.filter((item) => game !== item);
+        localStorage.setItem("favorites", JSON.stringify(newFav));
+        return newFav;
+      });
     } else {
-      setGamesInFavorite((prev) => [game, ...prev]);
+      setGamesInFavorite((prev) => {
+        const newFav = [game, ...prev];
+        localStorage.setItem("favorites", JSON.stringify(newFav));
+        return newFav;
+      });
     }
   };
 
   useEffect(() => {
     (async function () {
-      const cartData = await fetch(`${API}/cart`).then((res) => res.json());
-      setGamesInCart(cartData);
+      await fakeNetwork();
 
-      const gamesData = await fetch(`${API}/games`).then((res) => res.json());
-      setGames(gamesData);
+      const cartData = JSON.parse(localStorage.getItem("cart"));
+      setGamesInCart(cartData || []);
+      const favData = JSON.parse(localStorage.getItem("favorites"));
+      setGamesInFavorite(favData || []);
+
+      setGames(gamesFromLocalFile);
+      setIsLoadgin(false);
     })();
   }, []);
 
@@ -93,6 +95,7 @@ export default function App() {
               gamesInCart={gamesInCart}
               onDeleteItem={onDeleteItem}
               onAddItem={onAddItem}
+              isLoading={isLoading}
             />
           </Route>
           <Route path="*">
