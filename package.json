@@ -14,7 +14,7 @@
     "sass": "^1.63.6",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://github.com/iamdennshi/react-games",
+  "homepage": "https://iamdennshi.github.io/react-games",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
