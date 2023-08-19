@@ -104,7 +104,8 @@ export default function App() {
         </Switch>
         <Cart
           onDeleteItem={onDeleteItem}
-          onCartOpen={onCartOpen}
+          setGamesInCart={setGamesInCart}
+          onCartOpen={() => setIsCartOpen(false)}
           isCartOpen={isCartOpen}
           gamesInCart={gamesInCart}
         />

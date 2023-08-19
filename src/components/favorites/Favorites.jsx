@@ -15,8 +15,6 @@ function Favorites({
 }) {
   const emoji = useMemo(() => randomEmoji(), []);
 
-  console.log(isLoading);
-
   return (
     <div className="favorites">
       {gamesInFavorite.length !== 0 || isLoading ? (

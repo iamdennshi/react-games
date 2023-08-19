@@ -1,6 +1,5 @@
 import "./styles.scss";
 import { useState } from "react";
-import React from "react";
 
 const NUMBER_OF_POSTS = 2;
 const SHIFT = 100.0 / NUMBER_OF_POSTS;
@@ -9,10 +8,10 @@ function Slider() {
   const [posterIndex, setPosterIndex] = useState(0);
   const handleClick = (event, type) => {
     if (type) {
-      setPosterIndex(() => (posterIndex + 1) % NUMBER_OF_POSTS);
+      setPosterIndex((prev) => (prev + 1) % NUMBER_OF_POSTS);
     } else {
-      setPosterIndex(() =>
-        posterIndex - 1 >= 0 ? posterIndex - 1 : NUMBER_OF_POSTS - 1
+      setPosterIndex((prev) =>
+        prev - 1 >= 0 ? prev - 1 : NUMBER_OF_POSTS - 1
       );
     }
   };

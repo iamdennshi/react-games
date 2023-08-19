@@ -1,5 +1,6 @@
 import "./styles.scss";
 import { splitMoney } from "../../utils";
+import { useState } from "react";
 
 const RATE = 0.05;
 
@@ -8,21 +9,38 @@ export default function Cart({
   onCartOpen,
   isCartOpen,
   gamesInCart,
+  setGamesInCart,
 }) {
   const TOTAL_PRICE = gamesInCart.reduce((currentSum, currentNumber) => {
     return currentSum + currentNumber.price;
   }, 0);
 
+  const [isOrder, setIsOrder] = useState(false);
+
+  const handleOrder = () => {
+    setGamesInCart([]);
+    localStorage.removeItem("cart");
+    setIsOrder(true);
+    alert(JSON.stringify(gamesInCart));
+  };
+
+  const handleCloseCart = () => {
+    onCartOpen();
+    if (isOrder) {
+      setIsOrder(false);
+    }
+  };
+
   return (
     <>
       <div
-        onClick={onCartOpen}
+        onClick={handleCloseCart}
         className={`overlay ${isCartOpen ? "overlay--active" : ""}`}
       ></div>
       <div className={`cart ${isCartOpen ? "cart--active" : ""}`}>
         <div className="cart__header">
           <h2 className="cart__title">Корзина</h2>
-          <button onClick={onCartOpen} className="button-action">
+          <button onClick={handleCloseCart} className="button-action">
             <svg
               width="10"
               height="10"
@@ -43,6 +61,19 @@ export default function Cart({
               <CartItem onDeleteItem={onDeleteItem} key={game.id} game={game} />
             ))}
           </ul>
+        ) : isOrder ? (
+          <div className="order-placed">
+            <img
+              className="order-placed__img"
+              src="/img/order_placed.png"
+              alt="Order placed"
+            />
+            <b className="order-placed__title">Заказ оформлен</b>
+            <p className="order-placed__text">
+              Ваш заказ <b class="order-placed__number">№000</b> был отправлен
+              на модерацию
+            </p>
+          </div>
         ) : (
           <div className="empty-box">
             <img
@@ -56,13 +87,6 @@ export default function Cart({
             </p>
           </div>
         )}
-
-        {/* Если заказ был оформлен */}
-        {/* <div className="order-placed">
-                    <img className="order-placed__img" src="/img/order_placed.png" alt="Order placed" />
-                    <b className="order-placed__title">Заказ оформлен</b>
-                    <p className="order-placed__text">Ваш заказ <b class="order-placed__number">№000</b> был отправлен на вашу почту</p>
-                </div> */}
 
         <div className="cart__footer">
           {gamesInCart.length !== 0 ? (
@@ -81,7 +105,10 @@ export default function Cart({
                   {splitMoney(TOTAL_PRICE * RATE)}
                 </span>
               </div>
-              <button className="button-move button-move--to-right">
+              <button
+                onClick={handleOrder}
+                className="button-move button-move--to-right"
+              >
                 <p className="button-move__title">Оформить заказ</p>
                 <img
                   className="button-move__arrow"
